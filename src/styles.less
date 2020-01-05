@@ -1,0 +1,68 @@
+.hidden {
+    display: none;
+}
+.invisible {
+    visibility: hidden;
+}
+
+button {
+    border: 1px solid #e8e8e8;
+    background-color: #e8e8e8;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 4px 16px;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.3);
+
+    &:hover {
+        border-color: darken(#e8e8e8, 10%);
+        background-color: darken(#e8e8e8, 10%);
+    }
+    &:active {
+        border-color: darken(#e8e8e8, 20%);
+        background-color: darken(#e8e8e8, 20%);
+    }
+    &:focus {
+        outline: none;
+    }
+    &.disabled {
+        color: #ccc;
+        &:hover {
+            cursor: default;
+            background-color: #f0f0f1;
+        }
+        &:active {
+            background-color: #f0f0f1;
+        }
+    }
+    &.danger {
+        color: white;
+        background-color: #e91e63;
+        border-color: #e91e63;
+        &:hover {
+            border-color: #d11b59;
+            background-color: #d11b59;
+        }
+        &:active {
+            border-color: #b5184e;
+            background-color: #b5184e;
+        }
+    }
+    &.primary {
+        color: white;
+        background-color: #4285f4;
+        border-color: #4285f4;
+        &:hover {
+            border-color: darken(#4285f4, 10%);
+            background-color: darken(#4285f4, 10%);
+        }
+        &:active {
+            border-color: darken(#4285f4, 20%);
+            background-color: darken(#4285f4, 20%);
+        }
+        &.disabled {
+            border-color: lighten(#4285f4, 20%);
+            background-color: lighten(#4285f4, 20%);
+        }
+    }
+}

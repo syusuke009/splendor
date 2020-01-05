@@ -1,0 +1,24 @@
+<div>
+    <div class="backdrop" [class.open]="status.singleSelectDialog">
+    </div>
+    <div class="dialog-window" [class.open]="status.singleSelectDialog">
+        <div class="dialog-description">
+            <span>取得する宝石を1種類選んでください</span>
+        </div>
+        <div class="dialog-content">
+            <div class="target"><input type="radio" id="radio-white" name="color" [(ngModel)]="value" value="0"><label for="radio-white"><img class="img-tip white" />ダイヤモンド</label></div>
+            <div class="target"><input type="radio" id="radio-blue" name="color" [(ngModel)]="value" value="1"><label for="radio-blue"><img class="img-tip blue" />サファイア</label></div>
+            <div class="target"><input type="radio" id="radio-green" name="color" [(ngModel)]="value" value="2"><label for="radio-green"><img class="img-tip green" />エメラルド</label></div>
+            <div class="target"><input type="radio" id="radio-red" name="color" [(ngModel)]="value" value="3"><label for="radio-red"><img class="img-tip red" />ルビー</label></div>
+            <div class="target"><input type="radio" id="radio-black" name="color" [(ngModel)]="value" value="4"><label for="radio-black"><img class="img-tip black" />オニキス</label></div>
+        </div>
+        <div class="dialog-message">
+            <span *ngIf="value==null">取得する宝石を選択してください</span>
+            <span class="invisible" *ngIf="value!=null">選択されています</span>
+        </div>
+        <div class="dialog-buttons">
+            <button (click)="onCancel()">キャンセル</button>
+            <button class="primary" [class.disabled]="value==null" (click)="onOK()">OK</button>
+        </div>
+    </div>
+</div>

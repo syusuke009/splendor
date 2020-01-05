@@ -1,0 +1,12 @@
+<div class="tile">
+    <div class="tile-header">
+        <div class="point" [class.invisible]="tile.point==0">{{tile.point}}</div>
+    </div>
+    <div class="tile-content">
+        <div [class.hidden]="tile.white==0"><img class="img-tip white"/><span class="count">{{tile.white}}</span></div>
+        <div [class.hidden]="tile.blue==0"><img class="img-tip blue"/><span class="count">{{tile.blue}}</span></div>
+        <div [class.hidden]="tile.green==0"><img class="img-tip green"/><span class="count">{{tile.green}}</span></div>
+        <div [class.hidden]="tile.red==0"><img class="img-tip red"/><span class="count">{{tile.red}}</span></div>
+        <div [class.hidden]="tile.black==0"><img class="img-tip black"/><span class="count">{{tile.black}}</span></div>
+    </div>
+</div>

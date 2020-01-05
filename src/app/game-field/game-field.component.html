@@ -1,0 +1,65 @@
+<div class="screen">
+    <div class="players">
+        <div *ngFor="let player of status.players" class="player-info">
+            <div><span>{{player.name}}</span><span *ngIf="player.myTurn" class="turn-mark">playing</span></div>
+            <div><span>{{player.point}}</span><span> Point</span></div>
+            <div class="player-tips-row">
+                <div><i class="img-tip white"></i><span class="tip-count">×{{player.tips.white}}</span></div>
+                <div><i class="img-tip asset white"></i><span class="tip-count">×{{player.assets.white}}</span><span class="total-count">={{player.tips.white + player.assets.white}}</span></div>
+            </div>
+            <div class="player-tips-row">
+                <div><i class="img-tip blue"></i><span class="tip-count">×{{player.tips.blue}}</span></div>
+                <div><i class="img-tip asset blue"></i><span class="tip-count">×{{player.assets.blue}}</span><span class="total-count">={{player.tips.blue + player.assets.blue}}</span></div>
+            </div>
+            <div class="player-tips-row">
+                <div><i class="img-tip green"></i><span class="tip-count">×{{player.tips.green}}</span></div>
+                <div><i class="img-tip asset green"></i><span class="tip-count">×{{player.assets.green}}</span><span class="total-count">={{player.tips.green + player.assets.green}}</span></div>
+            </div>
+            <div class="player-tips-row">
+                <div><i class="img-tip red"></i><span class="tip-count">×{{player.tips.red}}</span></div>
+                <div><i class="img-tip asset red"></i><span class="tip-count">×{{player.assets.red}}</span><span class="total-count">={{player.tips.red + player.assets.red}}</span></div>
+            </div>
+            <div class="player-tips-row">
+                <div><i class="img-tip black"></i><span class="tip-count">×{{player.tips.black}}</span></div>
+                <div><i class="img-tip asset black"></i><span class="tip-count">×{{player.assets.black}}</span><span class="total-count">={{player.tips.black + player.assets.black}}</span></div>
+            </div>
+            <div class="player-tips-row">
+                <div><i class="img-tip gold"></i><span class="tip-count">×{{player.tips.gold}}</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="play-field">
+        <div class="asset-field">
+            <app-asset-line level=1 (selected)="onSelected($event)"></app-asset-line>
+            <app-asset-line level=2 (selected)="onSelected($event)"></app-asset-line>
+            <app-asset-line level=3 (selected)="onSelected($event)"></app-asset-line>
+        </div>
+        <div class="noble-field">
+            <app-tile *ngFor="let noble of status.tiles" [(tile)]="noble"></app-tile>
+        </div>
+        <div class="play-field-footer">
+            <div class="tip-field">
+                <div><i class="img-tip white"></i><span class="tip-count">×{{status.tipResource.white}}</span></div>
+                <div><i class="img-tip blue"></i><span class="tip-count">×{{status.tipResource.blue}}</span></div>
+                <div><i class="img-tip green"></i><span class="tip-count">×{{status.tipResource.green}}</span></div>
+                <div><i class="img-tip red"></i><span class="tip-count">×{{status.tipResource.red}}</span></div>
+                <div><i class="img-tip black"></i><span class="tip-count">×{{status.tipResource.black}}</span></div>
+                <div><i class="img-tip gold"></i><span class="tip-count">×{{status.tipResource.gold}}</span></div>
+            </div>
+            <div class="tile-field">
+
+            </div>
+        </div>
+        <div class="operation-field">
+            <button (click)="openMultiSelectDialog()">違う種類の宝石を３つ取る</button>
+            <button (click)="openSingleSelectDialog()">同じ種類の宝石を２つ取る</button>
+            <button (click)="purchaseCard()">カードを購入する</button>
+            <button (click)="reserveCard()">カードを予約してゴールドチップを得る</button>
+            <button [class.hidden]="!status.purchaseCard&&!status.reserveCard" (click)="onCancel()">キャンセル</button>
+        </div>
+    </div>
+    <div class="detail-area"></div>
+
+    <app-tip-multi-select-dialog></app-tip-multi-select-dialog>
+    <app-tip-single-select-dialog></app-tip-single-select-dialog>
+</div>

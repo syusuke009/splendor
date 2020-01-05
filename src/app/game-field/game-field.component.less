@@ -1,0 +1,87 @@
+.screen {
+
+    display: flex;
+
+}
+
+.players {
+    min-width: 200px;
+
+    .player-info {
+        padding: 8px;
+
+        .player-tips-row {
+            display: flex;
+
+            > div {
+                margin-right: 8px;
+            }
+        }
+    }
+    .turn-mark {
+        color: white;
+        background-color: #e91e63;
+        border-color: #e91e63;
+        border-radius: 10px;
+        font-size: 12px;
+        padding: 2px 8px;
+        margin-left: 8px;
+    }
+}
+
+.noble-field {
+    display: flex;
+}
+
+.play-field-footer {
+    display: flex;
+}
+
+.operation-field {
+    button {
+        margin: 0 4px;
+    }
+}
+
+.tip-field {
+    margin: 8px;
+    display: flex;
+
+    > div {
+        margin-right: 16px;
+    }
+}
+.tip-count {
+    vertical-align: super;
+}
+.total-count {
+    vertical-align: super;
+    margin-left: 8px;
+}
+.img-tip {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+    &.asset {
+        border-radius: 0;
+    }
+    &.white {
+        content: url(/assets/tip/white.jpg);
+    }
+    &.blue {
+        content: url(/assets/tip/blue.jpg);
+    }
+    &.green {
+        content: url(/assets/tip/green.jpg);
+    }
+    &.red {
+        content: url(/assets/tip/red.jpg);
+    }
+    &.black {
+        content: url(/assets/tip/black.jpg);
+    }
+    &.gold {
+        content: url(/assets/tip/gold.jpg);
+    }
+}

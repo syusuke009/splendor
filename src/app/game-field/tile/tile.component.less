@@ -1,0 +1,59 @@
+.tile {
+    width: 96px;
+    height: 128px;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 2px;
+    border: 1px solid #888;
+    transition: all 0.5s ease;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.25), 0 1px 2px 0 rgba(0,0,0,.15), 0 -1px 4px -1px rgba(0,0,0,.1);
+
+}
+
+.tile-header {
+    padding-bottom: 4px;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #ccc;
+}
+
+.tile-content {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    height: 108px;
+}
+
+.point {
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    color: white;
+    background-color: rgba(0,0,0,.95);
+}
+
+.img-tip {
+    width: 24px;
+    height: 24px;
+    &.white {
+        content: url(/assets/tip/white.jpg);
+    }
+    &.blue {
+        content: url(/assets/tip/blue.jpg);
+    }
+    &.green {
+        content: url(/assets/tip/green.jpg);
+    }
+    &.red {
+        content: url(/assets/tip/red.jpg);
+    }
+    &.black {
+        content: url(/assets/tip/black.jpg);
+    }
+}
+
+.count {
+    vertical-align: super;
+    line-height: 24px;
+}

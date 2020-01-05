@@ -1,0 +1,18 @@
+<div *ngIf="card!=null" class="card" [class.selectable]="card.selectable" (click)="onClick()">
+    <div class="card-header">
+        <div class="point" [class.invisible]="card.point==0">{{card.point}}</div>
+        <div class="color"><img class="img-tip"
+            [class.white]="card.color==0"
+            [class.blue]="card.color==1"
+            [class.green]="card.color==2"
+            [class.red]="card.color==3"
+            [class.black]="card.color==4"></div>
+    </div>
+    <div class="card-content">
+        <div [class.hidden]="card.white==0"><img class="img-tip white"/><span class="count">{{card.white}}</span></div>
+        <div [class.hidden]="card.blue==0"><img class="img-tip blue"/><span class="count">{{card.blue}}</span></div>
+        <div [class.hidden]="card.green==0"><img class="img-tip green"/><span class="count">{{card.green}}</span></div>
+        <div [class.hidden]="card.red==0"><img class="img-tip red"/><span class="count">{{card.red}}</span></div>
+        <div [class.hidden]="card.black==0"><img class="img-tip black"/><span class="count">{{card.black}}</span></div>
+    </div>
+</div>

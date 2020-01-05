@@ -1,0 +1,25 @@
+<div>
+    <div class="backdrop" [class.open]="status.multiSelectDialog">
+    </div>
+    <div class="dialog-window" [class.open]="status.multiSelectDialog">
+        <div class="dialog-description">
+            <span>取得する宝石を3種類選んでください</span>
+        </div>
+        <div class="dialog-content">
+            <div class="target"><input type="checkbox" id="checkbox-white" [(ngModel)]="white" (change)="onChange()"><label for="checkbox-white"><img class="img-tip white" />ダイヤモンド</label></div>
+            <div class="target"><input type="checkbox" id="checkbox-blue" [(ngModel)]="blue" (change)="onChange()"><label for="checkbox-blue"><img class="img-tip blue" />サファイア</label></div>
+            <div class="target"><input type="checkbox" id="checkbox-green" [(ngModel)]="green" (change)="onChange()"><label for="checkbox-green"><img class="img-tip green" />エメラルド</label></div>
+            <div class="target"><input type="checkbox" id="checkbox-red" [(ngModel)]="red" (change)="onChange()"><label for="checkbox-red"><img class="img-tip red" />ルビー</label></div>
+            <div class="target"><input type="checkbox" id="checkbox-black" [(ngModel)]="black" (change)="onChange()"><label for="checkbox-black"><img class="img-tip black" />オニキス</label></div>
+        </div>
+        <div class="dialog-message">
+            <span *ngIf="count<3">３つ選択してください</span>
+            <span *ngIf="count>3">選択できるのは３つまでです</span>
+            <span class="invisible" *ngIf="count==3">３つ選択されています</span>
+        </div>
+        <div class="dialog-buttons">
+            <button (click)="onCancel()">キャンセル</button>
+            <button class="primary" [class.disabled]="count!=3" (click)="onOK()">OK</button>
+        </div>
+    </div>
+</div>
