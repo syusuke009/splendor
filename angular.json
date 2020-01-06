@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "splendor2": {
+    "splendor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/splendor2",
+            "outputPath": "dist/splendor",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "splendor2:build"
+            "browserTarget": "splendor:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "splendor2:build:production"
+              "browserTarget": "splendor:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "splendor2:build"
+            "browserTarget": "splendor:build"
           }
         },
         "test": {
@@ -115,15 +115,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "splendor2:serve"
+            "devServerTarget": "splendor:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "splendor2:serve:production"
+              "devServerTarget": "splendor:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "splendor2"
+  "defaultProject": "splendor"
 }
