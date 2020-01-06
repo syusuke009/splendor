@@ -1,17 +1,3 @@
-<p>title-page works!</p>
-<div>
-  <span>Player1</span><input [(ngModel)]="players[0]" placeholder="名前をいれてください" />
-</div>
-<div>
-  <span>Player2</span><input [(ngModel)]="players[1]" placeholder="名前をいれてください" />
-</div>
-<div>
-  <span>Player3</span><input />
-</div>
-<div>
-  <span>Player4</span><input />
-</div>
-<div>
-  <span>Player5</span><input />
-</div>    
-<button><a routerLink="/play">Game Start</a></button>
+<app-players-input (changed)="onChanged($event)"></app-players-input>
+<a routerLink="/play"><button [class.disabled]="notReady" [disabled]="notReady" class="start-button primary">Game Start</button></a>
+<div><span class="error-message">{{message}}</span></div>

@@ -12,6 +12,7 @@ import { TipMultiSelectDialogComponent } from './game-field/tip-multi-select-dia
 import { CardComponent } from './game-field/card/card.component';
 import { RearCardComponent } from './game-field/rear-card/rear-card.component';
 import { TileComponent } from './game-field/tile/tile.component';
+import { PlayersInputComponent } from './title-page/players-input/players-input.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TileComponent } from './game-field/tile/tile.component';
     TipMultiSelectDialogComponent,
     CardComponent,
     RearCardComponent,
-    TileComponent
+    TileComponent,
+    PlayersInputComponent
   ],
   imports: [
     BrowserModule,

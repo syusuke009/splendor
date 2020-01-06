@@ -8,12 +8,28 @@ import { SettingService } from '../setting.service';
 })
 export class TitlePageComponent implements OnInit {
 
-  players: string[] = [null,null,null,null,null];
+  notReady: boolean;
+  message: string;
 
-  constructor(private setting: SettingService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.setting.setPlayers(this.players);
   }
 
+  onChanged(players: string[]) {0
+    this.notReady = players.filter(s => !s).length != 0;
+    this.message = null;
+    if (this.notReady == true) {
+      this.message = '名前の入力されていないプレイヤーがいます';
+      return;
+    }
+    this.notReady = players.map(subject => 
+      players.filter(object => subject == object).length > 1
+    ).filter(bool => bool).length != 0;
+    if (this.notReady == true) {
+      this.message = '同じ名前のプレイヤーがいます';
+      return;
+    }
+    this.message = null;
+  }
 }
