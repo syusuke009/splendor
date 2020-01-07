@@ -31,7 +31,7 @@ export class CardDealService {
     status.level1 = this.castToCard(this.shuffle(Decks.LEVEL_1));
     status.level2 = this.castToCard(this.shuffle(Decks.LEVEL_2));
     status.level3 = this.castToCard(this.shuffle(Decks.LEVEL_3));
-    status.tiles = this.castToCard(this.shuffle(Decks.TILE));
+    status.tiles = this.castToTile(this.shuffle(Decks.TILE));
   }
 
   private castToCard(boundle: any[]): Card[] {

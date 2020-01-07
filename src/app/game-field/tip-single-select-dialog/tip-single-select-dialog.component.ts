@@ -4,6 +4,7 @@ import { Tips } from '../tips';
 import { GameStatusService } from '../game-status.service';
 import { GameStatus } from '../game-status';
 import { Color } from '../color.enum';
+import { GamePhaseConst } from '../game-phase-const';
 
 @Component({
   selector: 'app-tip-single-select-dialog',
@@ -30,12 +31,12 @@ export class TipSingleSelectDialogComponent implements OnInit {
     this.transferResource();
     this.reset();
     this.statusService.nextTurn(this.status);
-    this.status.singleSelectDialog = false;
+    this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 
   onCancel() {
     this.reset();
-    this.status.singleSelectDialog = false;
+    this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 
   transferResource() {

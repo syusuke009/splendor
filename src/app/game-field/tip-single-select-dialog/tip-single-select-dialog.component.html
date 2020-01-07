@@ -1,7 +1,7 @@
 <div>
-    <div class="backdrop" [class.open]="status.singleSelectDialog">
+    <div class="backdrop" [class.open]="status.phase=='open-tip-single-dialog'">
     </div>
-    <div class="dialog-window" [class.open]="status.singleSelectDialog">
+    <div class="dialog-window" [class.open]="status.phase=='open-tip-single-dialog'">
         <div class="dialog-description">
             <span>取得する宝石を1種類選んでください</span>
         </div>
