@@ -1,7 +1,7 @@
 <div>
-    <div class="backdrop" [class.open]="status.multiSelectDialog">
+    <div class="backdrop" [class.open]="status.phase=='open-tip-multi-dialog'">
     </div>
-    <div class="dialog-window" [class.open]="status.multiSelectDialog">
+    <div class="dialog-window" [class.open]="status.phase=='open-tip-multi-dialog'">
         <div class="dialog-description">
             <span>取得する宝石を3種類選んでください</span>
         </div>

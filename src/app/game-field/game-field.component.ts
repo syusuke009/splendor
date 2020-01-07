@@ -4,6 +4,7 @@ import { GameStatus } from './game-status';
 import { Player } from './player';
 import { Card } from './card';
 import { Tips } from './tips';
+import { GamePhaseConst } from './game-phase-const';
 
 @Component({
   selector: 'app-game-field',
@@ -22,25 +23,25 @@ export class GameFieldComponent implements OnInit {
 
   openMultiSelectDialog() {
     this.resetOperation();
-    this.status.multiSelectDialog = true;
+    this.status.phase = GamePhaseConst.OPEN_TIP_MULTI_DIALOG;
   }
 
   openSingleSelectDialog() {
     this.resetOperation();
-    this.status.singleSelectDialog = true;
+    this.status.phase = GamePhaseConst.OPEN_TIP_SINGLE_DIALOG;
   }
 
   purchaseCard() {
     this.resetOperation();
     let p: Player = this.status.getCurrentPlayer();
     this.status.getFieldCards().forEach(card => card.setSelectable(p.canSelect(card)));
-    this.status.purchaseCard = true;
+    this.status.phase = GamePhaseConst.SELECT_PURCHASE_CARD;
   }
 
   reserveCard() {
     this.resetOperation();
     this.status.getFieldCards().forEach(card => card.setSelectable(true));
-    this.status.reserveCard = true;
+    this.status.phase = GamePhaseConst.SELECT_RESERVATION_CARD;
   }
 
   onCancel() {
@@ -48,22 +49,19 @@ export class GameFieldComponent implements OnInit {
   }
 
   private resetOperation() {
-    this.status.multiSelectDialog = false;
-    this.status.singleSelectDialog = false;
-    this.status.purchaseCard = false;
-    this.status.reserveCard = false;
+    this.status.phase = GamePhaseConst.WAIT_OPERATION;
     this.status.getFieldCards().forEach(card => card.setSelectable(false));
   }
 
   onSelected(card: Card) {
-    if (this.status.purchaseCard) {
+    if (this.status.phase == GamePhaseConst.SELECT_PURCHASE_CARD) {
       let p: Player = this.status.getCurrentPlayer();
       let returns: Tips = p.acquire(card);
       this.status.tipResource.add(returns);
       this.service.nextTurn(this.status);
       this.resetOperation();
     }
-    if (this.status.reserveCard) {
+    if (this.status.phase == GamePhaseConst.SELECT_RESERVATION_CARD) {
       let p: Player = this.status.getCurrentPlayer();
       if (this.status.tipResource.gold == 0) {
         p.reserve(card, false);

@@ -55,7 +55,7 @@
             <button (click)="openSingleSelectDialog()">同じ種類の宝石を２つ取る</button>
             <button (click)="purchaseCard()">カードを購入する</button>
             <button (click)="reserveCard()">カードを予約してゴールドチップを得る</button>
-            <button [class.hidden]="!status.purchaseCard&&!status.reserveCard" (click)="onCancel()">キャンセル</button>
+            <button [class.hidden]="status.phase!='select-purchase-card'&&status.phase!='select-reservation-card'" (click)="onCancel()">キャンセル</button>
         </div>
     </div>
     <div class="detail-area"></div>

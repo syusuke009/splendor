@@ -3,6 +3,7 @@ import { GameStatus } from '../game-status';
 import { GameStatusService } from '../game-status.service';
 import { Player } from '../player';
 import { Tips } from '../tips';
+import { GamePhaseConst } from '../game-phase-const';
 
 @Component({
   selector: 'app-tip-multi-select-dialog',
@@ -55,12 +56,12 @@ export class TipMultiSelectDialogComponent implements OnInit {
     this.transferResource();
     this.reset();
     this.statusService.nextTurn(this.status);
-    this.status.multiSelectDialog = false;
+    this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 
   onCancel() {
     this.reset();
-    this.status.multiSelectDialog = false;
+    this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 
   transferResource() {

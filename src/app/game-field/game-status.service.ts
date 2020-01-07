@@ -3,6 +3,9 @@ import { Player } from './player';
 import { CardDealService } from './card-deal.service';
 import { SettingService } from '../setting.service';
 import { GameStatus } from './game-status';
+import { Tile } from './tile';
+import { Tips } from './tips';
+import { GamePhaseConst } from './game-phase-const';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +41,31 @@ export class GameStatusService {
   }
 
   nextTurn(status: GameStatus) {
+    this.tryVisit(this.status.tiles);
+    if (this.status.phase == GamePhaseConst.OPEN_NOBLE_SELECT_DIALOG) {
+      return;
+    }
     status.nextTurn();
+  }
+  private tryVisit(tiles: Tile[]) {
+    let player: Player = this.status.getCurrentPlayer();
+    let assets: Tips = player.assets;
+    let nobles: Tile[] = tiles.filter(noble => noble.isSatisfied(assets));
+    if (nobles.length == 0) {
+      return;
+    }
+    let noble: Tile;
+    if (nobles.length == 1) {
+      noble = nobles.pop();
+      player.visit(noble);
+      this.status.removeTile(noble);
+    }
+    if (nobles.length > 1) {
+      // TODO dialogで一人選択する
+      noble = nobles.pop();
+      player.visit(noble);
+      this.status.removeTile(noble);
+      // this.status.phase == GamePhaseConst.OPEN_NOBLE_SELECT_DIALOG;
+    }
   }
 }

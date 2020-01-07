@@ -17,12 +17,7 @@ export class GameStatus {
 
     private turn: number = 0;
 
-    /* Dialog Open Status */
-    multiSelectDialog: boolean = false;
-    singleSelectDialog: boolean = false;
-    /* Card Selection Status */
-    purchaseCard: boolean = false;
-    reserveCard: boolean = false;
+    phase: string;
 
     getCurrentPlayer() {
       return this.players[this.turn];
@@ -38,6 +33,10 @@ export class GameStatus {
     removeFieldCard(card: Card) {
       let i: number = this.fieldCards.indexOf(card);
       this.fieldCards.splice(i, 1);
+    }
+    removeTile(tile: Tile) {
+      let i: number = this.tiles.indexOf(tile);
+      this.tiles.splice(i, 1);
     }
     
     nextTurn() {

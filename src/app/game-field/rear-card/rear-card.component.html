@@ -1,4 +1,4 @@
-<div class="card rear" [class.selectable]="status.reserveCard" [class.invisible]="deck.length==0">
+<div class="card rear" [class.selectable]="status.phase=='select-reservation-card'" [class.invisible]="deck.length==0">
     <div class="figure"
             [class.level-1]="level==1"
             [class.level-2]="level==2"
