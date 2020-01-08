@@ -49,4 +49,14 @@ export class GameStatus {
       this.turn = current;
       this.getCurrentPlayer().myTurn = true;
     }
+
+    /*
+     * ボタン制御用メソッド
+     */
+    canReserve(): boolean {
+      if (this.getCurrentPlayer().reservations.length == 3) {
+        return false;
+      }
+      return true;
+    }
 }

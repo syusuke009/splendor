@@ -35,6 +35,7 @@ export class GameFieldComponent implements OnInit {
     this.resetOperation();
     let p: Player = this.status.getCurrentPlayer();
     this.status.getFieldCards().forEach(card => card.setSelectable(p.canSelect(card)));
+    this.status.players.forEach(p => p.reservations.forEach(card => card.setSelectable(p.canSelect(card))));
     this.status.phase = GamePhaseConst.SELECT_PURCHASE_CARD;
   }
 
@@ -51,12 +52,17 @@ export class GameFieldComponent implements OnInit {
   private resetOperation() {
     this.status.phase = GamePhaseConst.WAIT_OPERATION;
     this.status.getFieldCards().forEach(card => card.setSelectable(false));
+    this.status.players.forEach(p => p.reservations.forEach(card => card.setSelectable(false)));
   }
 
   onSelected(card: Card) {
+    this.status.removeFieldCard(card);
     if (this.status.phase == GamePhaseConst.SELECT_PURCHASE_CARD) {
       let p: Player = this.status.getCurrentPlayer();
       let returns: Tips = p.acquire(card);
+      if (p.isReserved(card)) {
+        p.purchaseReserved(card);
+      }
       this.status.tipResource.add(returns);
       this.service.nextTurn(this.status);
       this.resetOperation();
