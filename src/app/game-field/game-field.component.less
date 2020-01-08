@@ -29,23 +29,41 @@
     }
 }
 
-.noble-field {
+.asset-field {
     display: flex;
+    
+    .reserved-asset {
+        margin-left: 32px;
+        background-color: #d1ffd1;
+
+        .reserved-card-frame {
+            margin-bottom: 16px;
+        }
+    } 
 }
 
-.play-field-footer {
+.noble-field {
     display: flex;
 }
 
 .operation-field {
     button {
         margin: 0 4px;
+        padding: 8px 16px;
     }
 }
 
 .tip-field {
     margin: 8px;
     display: flex;
+    
+    .img-tip {
+        width: 48px;
+        height: 48px;
+    }
+    .tip-count {
+        font-size: 20px;
+    }
 
     > div {
         margin-right: 16px;

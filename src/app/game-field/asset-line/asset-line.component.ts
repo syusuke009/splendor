@@ -42,7 +42,6 @@ export class AssetLineComponent implements OnInit {
   }
 
   onSelected(card: Card, index: number) {
-    this.statusService.status.removeFieldCard(card);
     switch(index) {
     case 1:
       this.card1 = this.switchFunc()();

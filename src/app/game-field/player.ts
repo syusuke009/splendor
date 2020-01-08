@@ -17,6 +17,22 @@ export class Player {
 
     myTurn: boolean = false;
 
+    getTotalWhite() {
+        return this.tips.white + this.assets.white;
+    }
+    getTotalBlue() {
+        return this.tips.blue + this.assets.blue;
+    }
+    getTotalGreen() {
+        return this.tips.green + this.assets.green;
+    }
+    getTotalRed() {
+        return this.tips.red + this.assets.red;
+    }
+    getTotalBlack() {
+        return this.tips.black + this.assets.black;
+    }
+
     /**
      * チップを払ってカードを取得する
      * @param card 
@@ -35,6 +51,14 @@ export class Player {
         if (canGetGold) {
             this.tips.gold++;
         }
+    }
+
+    isReserved(card: Card): boolean {
+        return this.reservations.indexOf(card) >= 0;
+    }
+    purchaseReserved(card: Card) {
+        let i: number = this.reservations.indexOf(card);
+        this.reservations.splice(i, 1);
     }
 
     visit(noble: Tile) {
