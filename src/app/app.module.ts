@@ -13,6 +13,7 @@ import { CardComponent } from './game-field/card/card.component';
 import { RearCardComponent } from './game-field/rear-card/rear-card.component';
 import { TileComponent } from './game-field/tile/tile.component';
 import { PlayersInputComponent } from './title-page/players-input/players-input.component';
+import { GamesetSlideComponent } from './game-field/gameset-slide/gameset-slide.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +26,15 @@ import { PlayersInputComponent } from './title-page/players-input/players-input.
     CardComponent,
     RearCardComponent,
     TileComponent,
-    PlayersInputComponent
+    PlayersInputComponent,
+    GamesetSlideComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [TipMultiSelectDialogComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
