@@ -1,0 +1,123 @@
+.backdrop {
+    background-color: #000;
+    z-index: -1;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+
+    &.active {
+        z-index: 9999;
+        opacity: 0.9;
+    }
+}
+
+.slide {
+    background-color: transparent;
+    text-align: center;
+    font-family: sans-serif;
+    z-index: -1;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+    padding: 8px;
+    width: 50%;
+    height: 80%;
+
+    &.active {
+        z-index: 10000;
+        opacity: 1;
+    }
+}
+
+.result-line {
+    display: flex;
+    justify-content: center;
+
+    .result-info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 32px;
+    }
+}
+
+h2 {
+    margin:32px;
+    font-size: 72px;
+    color: #ff0d0d;
+    background: -webkit-linear-gradient(30deg, #fcb3a9, #b40303, #eca9a9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+h1.first {
+    margin:48px;
+    font-size: 128px;
+    .ranking,
+    .player-name {
+        color: #DA8E00;
+        background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #edaf06, #fdf03d, #f5d151, #e4bc1b, #db9916, #cf8700, #EDAC06, #F7DE05, #ECB802, #EDAC06);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+h3 {
+    margin:48px;
+    font-size: 64px;
+
+    &.second {
+        .ranking,
+        .player-name {
+            color: #aaa;
+            background: -webkit-linear-gradient(-45deg, #5e727a, #758186, #9695a3, #d3d3d8, #cdced3, #797c7e, #c2ccdb, #859094, #918e99, #8a8f94, #b0bac2, #6f6f72);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+
+    &.third {
+        .ranking,
+        .player-name {
+            color: #745528;
+            background: -webkit-linear-gradient(-45deg, #745527, #6b5015, #c59143, #7c5d2b, #886126, #5a3d11, #745528, #412c0e, #c9913d, #9e7333, #745528, #9e630b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+
+    &.fourth {
+        .ranking,
+        .player-name {
+            color: #5f62e9;
+            background: -webkit-linear-gradient(0deg, #5654e6, #5f62e9, #3d56c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+}
+.space {
+    color: transparent;
+    background-color: transparent;
+}
+.result-info {
+    color: #ccc;
+    .point-count {
+        font-size: 40%;
+    }
+    .assets-count {
+        font-size: 40%;
+    }
+}

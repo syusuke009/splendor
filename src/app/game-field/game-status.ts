@@ -19,8 +19,11 @@ export class GameStatus {
 
     phase: string;
 
-    getCurrentPlayer() {
+    getCurrentPlayer(): Player {
       return this.players[this.turn];
+    }
+    isLastPlayer(): boolean {
+      return this.turn == this.players.length -1;
     }
 
     getFieldCards(): Card[] {

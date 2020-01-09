@@ -1,0 +1,40 @@
+<div class="backdrop" [class.active]="result.gameset"></div>
+<div class="slide" [class.active]="result.gameset">
+    <h2>WINNER</h2>
+    <h1 class="result-line first" *ngFor="let player of result.first">
+        <span class="ranking">1st</span>
+        <span class="space">_</span>
+        <span class="player-name">{{player.name}}</span>
+        <div class="result-info">
+            <span class="point-count">{{player.point}} Point</span>
+            <span class="assets-count">{{player.assets.count()}} Card</span>
+        </div>
+    </h1>
+    <h3 class="result-line second" *ngFor="let player of result.second">
+        <span class="ranking">2nd</span>
+        <span class="space">_</span>
+        <span class="player-name">{{player.name}}</span>
+        <div class="result-info">
+            <span class="point-count">{{player.point}} Point</span>
+            <span class="assets-count">{{player.assets.count()}} Card</span>
+        </div>
+    </h3>
+    <h3 class="result-line third" *ngFor="let player of result.third">
+        <span class="ranking">3rd</span>
+        <span class="space">_</span>
+        <span class="player-name">{{player.name}}</span>
+        <div class="result-info">
+            <span class="point-count">{{player.point}} Point</span>
+            <span class="assets-count">{{player.assets.count()}} Card</span>
+        </div>
+    </h3>
+    <h3 class="result-line fourth" *ngFor="let player of result.fourth">
+        <span class="ranking">4th</span>
+        <span class="space">_</span>
+        <span class="player-name">{{player.name}}</span>
+        <div class="result-info">
+            <span class="point-count">{{player.point}} Point</span>
+            <span class="assets-count">{{player.assets.count()}} Card</span>
+        </div>
+    </h3>
+</div>

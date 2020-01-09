@@ -6,6 +6,7 @@ import { GameStatus } from './game-status';
 import { Tile } from './tile';
 import { Tips } from './tips';
 import { GamePhaseConst } from './game-phase-const';
+import { GameResultService } from './game-result.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class GameStatusService {
   status: GameStatus = new GameStatus();
 
   constructor(private setting: SettingService,
-    private dealer: CardDealService) { }
+    private dealer: CardDealService,
+    private gameresult: GameResultService) { }
 
   setup(): GameStatus {
     this.status.players = this.setting.getPlayers().map((name) => {
@@ -43,6 +45,9 @@ export class GameStatusService {
   nextTurn(status: GameStatus) {
     this.tryVisit(this.status.tiles);
     if (this.status.phase == GamePhaseConst.OPEN_NOBLE_SELECT_DIALOG) {
+      return;
+    }
+    if (this.status.isLastPlayer() && this.gameresult.isEnd(this.status.players)) {
       return;
     }
     status.nextTurn();

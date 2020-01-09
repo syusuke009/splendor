@@ -14,4 +14,13 @@ export class Tips {
         this.black += other.black;
         this.gold += other.gold;
     }
+
+    count(): number {
+        return this.white
+            + this.blue
+            + this.green
+            + this.red
+            + this.black
+            + this.gold;
+    }
 }
