@@ -6,11 +6,26 @@
             <span>取得する宝石を3種類選んでください</span>
         </div>
         <div class="dialog-content">
-            <div class="target"><input type="checkbox" id="checkbox-white" [(ngModel)]="white" (change)="onChange()"><label for="checkbox-white"><img class="img-tip white" />ダイヤモンド</label></div>
-            <div class="target"><input type="checkbox" id="checkbox-blue" [(ngModel)]="blue" (change)="onChange()"><label for="checkbox-blue"><img class="img-tip blue" />サファイア</label></div>
-            <div class="target"><input type="checkbox" id="checkbox-green" [(ngModel)]="green" (change)="onChange()"><label for="checkbox-green"><img class="img-tip green" />エメラルド</label></div>
-            <div class="target"><input type="checkbox" id="checkbox-red" [(ngModel)]="red" (change)="onChange()"><label for="checkbox-red"><img class="img-tip red" />ルビー</label></div>
-            <div class="target"><input type="checkbox" id="checkbox-black" [(ngModel)]="black" (change)="onChange()"><label for="checkbox-black"><img class="img-tip black" />オニキス</label></div>
+            <div class="target" [class.disabled]="prohibitWhite()">
+                <input type="checkbox" id="checkbox-white" [(ngModel)]="white" (change)="onChange()" [disabled]="prohibitWhite()">
+                <label for="checkbox-white"><img class="img-tip white" />ダイヤモンド</label>
+            </div>
+            <div class="target" [class.disabled]="prohibitBlue()">
+                <input type="checkbox" id="checkbox-blue" [(ngModel)]="blue" (change)="onChange()" [disabled]="prohibitBlue()">
+                <label for="checkbox-blue"><img class="img-tip blue" />サファイア</label>
+            </div>
+            <div class="target" [class.disabled]="prohibitGreen()">
+                <input type="checkbox" id="checkbox-green" [(ngModel)]="green" (change)="onChange()" [disabled]="prohibitGreen()">
+                <label for="checkbox-green"><img class="img-tip green" />エメラルド</label>
+            </div>
+            <div class="target" [class.disabled]="prohibitRed()">
+                <input type="checkbox" id="checkbox-red" [(ngModel)]="red" (change)="onChange()" [disabled]="prohibitRed()">
+                <label for="checkbox-red"><img class="img-tip red" />ルビー</label>
+            </div>
+            <div class="target" [class.disabled]="prohibitBlack()">
+                <input type="checkbox" id="checkbox-black" [(ngModel)]="black" (change)="onChange()" [disabled]="prohibitBlack()">
+                <label for="checkbox-black"><img class="img-tip black" />オニキス</label>
+            </div>
         </div>
         <div class="dialog-message">
             <span *ngIf="count<3">３つ選択してください</span>

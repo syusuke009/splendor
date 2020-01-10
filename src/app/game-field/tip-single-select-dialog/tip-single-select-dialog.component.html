@@ -6,11 +6,26 @@
             <span>取得する宝石を1種類選んでください</span>
         </div>
         <div class="dialog-content">
-            <div class="target"><input type="radio" id="radio-white" name="color" [(ngModel)]="value" value="0"><label for="radio-white"><img class="img-tip white" />ダイヤモンド</label></div>
-            <div class="target"><input type="radio" id="radio-blue" name="color" [(ngModel)]="value" value="1"><label for="radio-blue"><img class="img-tip blue" />サファイア</label></div>
-            <div class="target"><input type="radio" id="radio-green" name="color" [(ngModel)]="value" value="2"><label for="radio-green"><img class="img-tip green" />エメラルド</label></div>
-            <div class="target"><input type="radio" id="radio-red" name="color" [(ngModel)]="value" value="3"><label for="radio-red"><img class="img-tip red" />ルビー</label></div>
-            <div class="target"><input type="radio" id="radio-black" name="color" [(ngModel)]="value" value="4"><label for="radio-black"><img class="img-tip black" />オニキス</label></div>
+            <div class="target" [class.disabled]="prohibitWhite()">
+                <input type="radio" id="radio-white" name="color" [(ngModel)]="value" value="0" [disabled]="prohibitWhite()">
+                <label for="radio-white"><img class="img-tip white" />ダイヤモンド</label>
+            </div>
+            <div class="target" [class.disabled]="prohibitBlue()">
+                <input type="radio" id="radio-blue" name="color" [(ngModel)]="value" value="1" [disabled]="prohibitBlue()">
+                <label for="radio-blue"><img class="img-tip blue" />サファイア</label>
+            </div>
+            <div class="target" [class.disabled]="prohibitGreen()">
+                <input type="radio" id="radio-green" name="color" [(ngModel)]="value" value="2" [disabled]="prohibitGreen()">
+                <label for="radio-green"><img class="img-tip green" />エメラルド</label>
+            </div>
+            <div class="target" [class.disabled]="prohibitRed()">
+                <input type="radio" id="radio-red" name="color" [(ngModel)]="value" value="3" [disabled]="prohibitRed()">
+                <label for="radio-red"><img class="img-tip red" />ルビー</label>
+            </div>
+            <div class="target" [class.disabled]="prohibitBlack()">
+                <input type="radio" id="radio-black" name="color" [(ngModel)]="value" value="4" [disabled]="prohibitBlack()">
+                <label for="radio-black"><img class="img-tip black" />オニキス</label>
+            </div>
         </div>
         <div class="dialog-message">
             <span *ngIf="value==null">取得する宝石を選択してください</span>

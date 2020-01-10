@@ -13,6 +13,8 @@ import { GamePhaseConst } from '../game-phase-const';
 })
 export class TipSingleSelectDialogComponent implements OnInit {
 
+  private BORDER_COUNT: number = 4;
+
   value: string = null;
 
   status: GameStatus;
@@ -22,6 +24,22 @@ export class TipSingleSelectDialogComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  prohibitWhite(): boolean {
+    return this.status.tipResource.white < this.BORDER_COUNT;
+  }
+  prohibitBlue(): boolean {
+    return this.status.tipResource.blue < this.BORDER_COUNT;
+  }
+  prohibitGreen(): boolean {
+    return this.status.tipResource.green < this.BORDER_COUNT;
+  }
+  prohibitRed(): boolean {
+    return this.status.tipResource.red < this.BORDER_COUNT;
+  }
+  prohibitBlack(): boolean {
+    return this.status.tipResource.black < this.BORDER_COUNT;
   }
 
   onOK() {

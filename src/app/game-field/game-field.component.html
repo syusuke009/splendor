@@ -1,6 +1,6 @@
 <div class="screen">
     <div class="players">
-        <div *ngFor="let player of status.players" class="player-info">
+        <div *ngFor="let player of status.players" class="player-info" [class.my-turn]="player.myTurn">
             <div><span>{{player.name}}</span><span *ngIf="player.myTurn" class="turn-mark">playing</span></div>
             <div><span>{{player.point}}</span><span> Point</span></div>
             <div class="player-tips-row">
