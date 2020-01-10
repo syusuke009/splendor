@@ -29,6 +29,22 @@ export class TipMultiSelectDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  prohibitWhite(): boolean {
+    return this.status.tipResource.white == 0;
+  }
+  prohibitBlue(): boolean {
+    return this.status.tipResource.blue == 0;
+  }
+  prohibitGreen(): boolean {
+    return this.status.tipResource.green == 0;
+  }
+  prohibitRed(): boolean {
+    return this.status.tipResource.red == 0;
+  }
+  prohibitBlack(): boolean {
+    return this.status.tipResource.black == 0;
+  }
+
   onChange() {
     let checked: number = 0;
     if (this.white) {

@@ -18,23 +18,41 @@ export class GameResult {
         let tmpRank: Player[] = players.sort(this.comparingFunc);
         this.first.push(tmpRank.shift());
 
-        let second = this.tie(this.first, tmpRank);
-        if (second == null) {
+        let prev = this.first;
+        let next = this.second;
+        let p = tmpRank.shift();
+        if (p == null) {
             return;
         }
-        this.second.push(second);
+        if (this.comparingFunc(p, prev[0]) == 0) {
+            prev.push(p);
+        } else {
+            next.push(p);
+            prev = next;
+        }
+        next = this.third;
 
-        let third = this.tie(this.second, tmpRank);
-        if (third == null) {
+        p = tmpRank.shift();
+        if (p == null) {
             return;
         }
-        this.third.push(third);
+        if (this.comparingFunc(p, prev[0]) == 0) {
+            prev.push(p);
+        } else {
+            next.push(p);
+            prev = next;
+        }
+        next = this.fourth;
 
-        let fourth = this.tie(this.third, tmpRank);
-        if (fourth == null) {
+        p = tmpRank.shift();
+        if (p == null) {
             return;
         }
-        this.fourth.push(fourth);
+        if (this.comparingFunc(p, prev[0]) == 0) {
+            prev.push(p);
+        } else {
+            next.push(p);
+        }
     }
 
     private tie(rank: Player[], tmpRank: Player[]): Player {

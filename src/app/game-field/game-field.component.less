@@ -6,9 +6,14 @@
 
 .players {
     min-width: 200px;
+    margin: 8px;
 
     .player-info {
-        padding: 8px;
+        padding: 8px 12px;
+
+        &.my-turn {
+            border-left: 8px #e91e63 solid;
+        }
 
         .player-tips-row {
             display: flex;

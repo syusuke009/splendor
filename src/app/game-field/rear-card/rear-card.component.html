@@ -4,5 +4,10 @@
             [class.level-2]="level==2"
             [class.level-3]="level==3">
         <div class="cube"></div><div class="cube"></div><div class="cube"></div><div class="cube"></div><div class="cube"></div><div class="cube"></div>
+        <div class="signs">
+            <div class="level-sign"></div>
+            <div class="level-sign" *ngIf="level>1"></div>
+            <div class="level-sign" *ngIf="level>2"></div>
+        </div>
     </div>
 </div>
