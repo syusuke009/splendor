@@ -1,0 +1,53 @@
+<div class="backdrop" [class.open]="status.phase=='open-tip-release-dialog'">
+</div>
+<div class="dialog-window" [class.open]="status.phase=='open-tip-release-dialog'">
+    <div class="dialog-description">
+        <span>宝石が10個になるようにしてください (現在: {{total()}})</span>
+    </div>
+    <div class="dialog-content">
+        <div class="target">
+            <label><img class="img-tip white" />ダイヤモンド</label>
+            <button class="adjuster" (click)="onMinus(0)" [class.invisible]="tips.white == 0">－</button>
+            <input type="number" id="number-white" [(ngModel)]="tips.white" readonly="readonly">
+            <button class="adjuster" (click)="onPlus(0)" [class.invisible]="tips.white == maxWhite">＋</button>
+        </div>
+        <div class="target">
+            <label><img class="img-tip blue" />サファイア</label>
+            <button class="adjuster" (click)="onMinus(1)" [class.invisible]="tips.blue == 0">－</button>
+            <input type="number" id="number-blue" [(ngModel)]="tips.blue" readonly="readonly">
+            <button class="adjuster" (click)="onPlus(1)" [class.invisible]="tips.blue == maxBlue">＋</button>
+        </div>
+        <div class="target">
+            <label><img class="img-tip green" />エメラルド</label>
+            <button class="adjuster" (click)="onMinus(2)" [class.invisible]="tips.green == 0">－</button>
+            <input type="number" id="number-green" [(ngModel)]="tips.green" readonly="readonly">
+            <button class="adjuster" (click)="onPlus(2)" [class.invisible]="tips.green == maxGreen">＋</button>
+        </div>
+        <div class="target">
+            <label><img class="img-tip red" />ルビー</label>
+            <button class="adjuster" (click)="onMinus(3)" [class.invisible]="tips.red == 0">－</button>
+            <input type="number" id="number-red" [(ngModel)]="tips.red" readonly="readonly">
+            <button class="adjuster" (click)="onPlus(3)" [class.invisible]="tips.red == maxRed">＋</button>
+        </div>
+        <div class="target">
+            <label><img class="img-tip black" />オニキス</label>
+            <button class="adjuster" (click)="onMinus(4)" [class.invisible]="tips.black == 0">－</button>
+            <input type="number" id="number-black" [(ngModel)]="tips.black" readonly="readonly">
+            <button class="adjuster" (click)="onPlus(4)" [class.invisible]="tips.black == maxBlack">＋</button>
+        </div>
+        <div class="target">
+            <label><img class="img-tip gold" />ゴールド</label>
+            <button class="adjuster" (click)="onMinus(5)" [class.invisible]="tips.gold == 0">－</button>
+            <input type="number" id="number-gold" [(ngModel)]="tips.gold" readonly="readonly">
+            <button class="adjuster" (click)="onPlus(5)" [class.invisible]="tips.gold == maxGold">＋</button>
+        </div>
+    </div>
+    <div class="dialog-message">
+        <span *ngIf="total() > 10">宝石の数が10を超えています</span>
+        <span *ngIf="total() < 10">宝石の数が10未満です</span>
+        <span class="invisible" *ngIf="total() == 10">選択されています</span>
+    </div>
+    <div class="dialog-buttons">
+        <button class="primary" [class.disabled]="total() != 10" (click)="onOK()">OK</button>
+    </div>
+</div>

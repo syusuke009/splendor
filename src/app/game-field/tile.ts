@@ -2,6 +2,9 @@ import { Tips } from './tips';
 
 export class Tile {
     
+    id: string;
+    img: string;
+
     point: number;
 
     white: number;

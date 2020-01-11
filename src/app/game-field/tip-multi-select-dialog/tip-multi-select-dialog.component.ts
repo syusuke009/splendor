@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ContentChild, Output, EventEmitter } from '@angular/core';
 import { GameStatus } from '../game-status';
 import { GameStatusService } from '../game-status.service';
 import { Player } from '../player';
 import { Tips } from '../tips';
 import { GamePhaseConst } from '../game-phase-const';
+import { TipReleaseDialogComponent } from '../tip-release-dialog/tip-release-dialog.component';
 
 @Component({
   selector: 'app-tip-multi-select-dialog',
@@ -11,6 +12,8 @@ import { GamePhaseConst } from '../game-phase-const';
   styleUrls: ['./tip-multi-select-dialog.component.less']
 })
 export class TipMultiSelectDialogComponent implements OnInit {
+
+  @Output() over: EventEmitter<Player> = new EventEmitter();
 
   white: boolean;
   blue: boolean;
@@ -21,7 +24,7 @@ export class TipMultiSelectDialogComponent implements OnInit {
   count: number = 0;
 
   status: GameStatus;
-
+  
   constructor(private statusService: GameStatusService) {
     this.status = statusService.status;
   }
@@ -71,8 +74,11 @@ export class TipMultiSelectDialogComponent implements OnInit {
     }
     this.transferResource();
     this.reset();
+    if (this.status.getCurrentPlayer().tips.count() > 10) {
+      this.over.emit(this.status.getCurrentPlayer());
+      return;
+    }
     this.statusService.nextTurn(this.status);
-    this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 
   onCancel() {

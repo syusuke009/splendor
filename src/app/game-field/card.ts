@@ -4,6 +4,9 @@ import { Tips } from './tips';
 
 export class Card {
 
+    id: string;
+    img: string;
+
     color: Color;
 
     point: number;

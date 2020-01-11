@@ -47,10 +47,7 @@ export class GameStatusService {
     if (this.status.phase == GamePhaseConst.OPEN_NOBLE_SELECT_DIALOG) {
       return;
     }
-    if (this.status.isLastPlayer() && this.gameresult.isEnd(this.status.players)) {
-      return;
-    }
-    status.nextTurn();
+    this.nextTurnWithoutNobleVisit(status);
   }
   private tryVisit(tiles: Tile[]) {
     let player: Player = this.status.getCurrentPlayer();
@@ -59,18 +56,26 @@ export class GameStatusService {
     if (nobles.length == 0) {
       return;
     }
+    if (nobles.length > 1) {
+      this.status.phase = GamePhaseConst.OPEN_NOBLE_SELECT_DIALOG;
+      return;
+    }
     let noble: Tile;
     if (nobles.length == 1) {
       noble = nobles.pop();
       player.visit(noble);
       this.status.removeTile(noble);
     }
-    if (nobles.length > 1) {
-      // TODO dialogで一人選択する
-      noble = nobles.pop();
-      player.visit(noble);
-      this.status.removeTile(noble);
-      // this.status.phase == GamePhaseConst.OPEN_NOBLE_SELECT_DIALOG;
+  }
+  /**
+   * operation for NobleSelectDialog
+   * @param status 
+   */
+  nextTurnWithoutNobleVisit(status: GameStatus) {
+    if (this.status.isLastPlayer() && this.gameresult.isEnd(this.status.players)) {
+      return;
     }
+    status.nextTurn();
+    this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 }

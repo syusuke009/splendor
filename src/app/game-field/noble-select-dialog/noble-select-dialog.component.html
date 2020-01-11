@@ -1,0 +1,21 @@
+<div>
+    <div class="backdrop" [class.open]="status.phase=='open-noble-select-dialog'">
+    </div>
+    <div class="dialog-window size-{{visitedNobles().length}}" [class.open]="status.phase=='open-noble-select-dialog'">
+        <div class="dialog-description">
+            <span>このターン受け入れる貴族を1人選んでください</span>
+        </div>
+        <div class="dialog-content">
+            <div *ngFor="let noble of visitedNobles()" class="noble-frame" [class.selected]="noble==select">
+                <app-tile [(tile)]="noble" (selected)="onSelected($event)"></app-tile>
+            </div>
+        </div>
+        <div class="dialog-message">
+            <span *ngIf="select==null">貴族が選択されていません</span>
+            <span class="invisible" *ngIf="select!=null">選択されています</span>
+        </div>
+        <div class="dialog-buttons">
+            <button class="primary" [class.disabled]="select==null" (click)="onOK()">OK</button>
+        </div>
+    </div>
+</div>

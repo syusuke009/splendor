@@ -46,11 +46,8 @@ export class Player {
         return returns;
     }
 
-    reserve(card: Card, canGetGold: boolean) {
+    reserve(card: Card) {
         this.reservations.push(card);
-        if (canGetGold) {
-            this.tips.gold++;
-        }
     }
 
     isReserved(card: Card): boolean {
@@ -58,6 +55,9 @@ export class Player {
     }
     purchaseReserved(card: Card) {
         let i: number = this.reservations.indexOf(card);
+        if (i == -1) {
+          return;
+        }
         this.reservations.splice(i, 1);
     }
 

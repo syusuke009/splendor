@@ -14,6 +14,8 @@ import { RearCardComponent } from './game-field/rear-card/rear-card.component';
 import { TileComponent } from './game-field/tile/tile.component';
 import { PlayersInputComponent } from './title-page/players-input/players-input.component';
 import { GamesetSlideComponent } from './game-field/gameset-slide/gameset-slide.component';
+import { TipReleaseDialogComponent } from './game-field/tip-release-dialog/tip-release-dialog.component';
+import { NobleSelectDialogComponent } from './game-field/noble-select-dialog/noble-select-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { GamesetSlideComponent } from './game-field/gameset-slide/gameset-slide.
     RearCardComponent,
     TileComponent,
     PlayersInputComponent,
-    GamesetSlideComponent
+    GamesetSlideComponent,
+    TipReleaseDialogComponent,
+    NobleSelectDialogComponent
   ],
   imports: [
     BrowserModule,
