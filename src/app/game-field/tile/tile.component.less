@@ -1,25 +1,31 @@
-.tile {
+.tile-container {
     width: 108px;
     height: 128px;
     margin: 8px;
-    padding: 8px;
     border-radius: 2px;
     border: 1px solid #888;
-    transition: all 0.5s ease;
+    position: relative;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,.25), 0 1px 2px 0 rgba(0,0,0,.15), 0 -1px 4px -1px rgba(0,0,0,.1);
+}
 
+.tile {
+    position: relative;
+    background-color: transparent;
 }
 
 .tile-header {
-    padding-bottom: 4px;
+    padding: 4px;
+    padding-bottom: 0px;
     border-bottom: 1px solid #ccc;
+    background-color: rgba(255,255,255,.7);
 }
 
 .tile-content {
+    padding: 4px;
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
-    height: 108px;
+    height: 92px;
 }
 
 .point {
@@ -27,8 +33,38 @@
     height: 24px;
     width: 24px;
     text-align: center;
-    color: white;
-    background-color: rgba(0,0,0,.95);
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.cost-row {
+    height: 28px;
+}
+.cost {
+    display: inline-block;
+    padding-top: 2px;
+    padding-left: 4px;
+    height: 26px;
+    background-color: rgba(255,255,255,.6);
+}
+.count {
+    vertical-align: super;
+    padding: 0 4px;
+    line-height: 24px;
+    font-family: sans-serif;
+    font-size: 18px;
+}
+.count {
+    vertical-align: super;
+    line-height: 24px;
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
+.tile-pict {
+    width: 108px;
+    height: 128px;
+    position: absolute;
 }
 
 .img-tip {
@@ -51,7 +87,33 @@
     }
 }
 
-.count {
-    vertical-align: super;
-    line-height: 24px;
+.img-noble-0 {
+    content: url(/assets/tile/noble-0.jpg);
+}
+.img-noble-1 {
+    content: url(/assets/tile/noble-1.jpg);
+}
+.img-noble-2 {
+    content: url(/assets/tile/noble-2.jpg);
+}
+.img-noble-3 {
+    content: url(/assets/tile/noble-3.jpg);
+}
+.img-noble-4 {
+    content: url(/assets/tile/noble-4.jpg);
+}
+.img-noble-5 {
+    content: url(/assets/tile/noble-5.jpg);
+}
+.img-noble-6 {
+    content: url(/assets/tile/noble-6.jpg);
+}
+.img-noble-7 {
+    content: url(/assets/tile/noble-7.jpg);
+}
+.img-noble-8 {
+    content: url(/assets/tile/noble-8.jpg);
+}
+.img-noble-9 {
+    content: url(/assets/tile/noble-9.jpg);
 }

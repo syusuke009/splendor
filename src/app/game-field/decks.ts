@@ -102,15 +102,15 @@ export namespace Decks {
     ];
 
     export const TILE = [
-        {id:"t-33300",point:3,white:3,blue:3,green:3,red:0,black:0},
-        {id:"t-03330",point:3,white:0,blue:3,green:3,red:3,black:0},
-        {id:"t-00333",point:3,white:0,blue:0,green:3,red:3,black:3},
-        {id:"t-30033",point:3,white:3,blue:0,green:0,red:3,black:3},
-        {id:"t-33003",point:3,white:3,blue:3,green:0,red:0,black:3},
-        {id:"t-44000",point:3,white:4,blue:4,green:0,red:0,black:0},
-        {id:"t-04400",point:3,white:0,blue:4,green:4,red:0,black:0},
-        {id:"t-00440",point:3,white:0,blue:0,green:4,red:4,black:0},
-        {id:"t-00044",point:3,white:0,blue:0,green:0,red:4,black:4},
-        {id:"t-40004",point:3,white:4,blue:0,green:0,red:0,black:4}
+        {id:"t-33300",point:3,white:3,blue:3,green:3,red:0,black:0,img:"noble-0"},
+        {id:"t-03330",point:3,white:0,blue:3,green:3,red:3,black:0,img:"noble-1"},
+        {id:"t-00333",point:3,white:0,blue:0,green:3,red:3,black:3,img:"noble-2"},
+        {id:"t-30033",point:3,white:3,blue:0,green:0,red:3,black:3,img:"noble-3"},
+        {id:"t-33003",point:3,white:3,blue:3,green:0,red:0,black:3,img:"noble-4"},
+        {id:"t-44000",point:3,white:4,blue:4,green:0,red:0,black:0,img:"noble-5"},
+        {id:"t-04400",point:3,white:0,blue:4,green:4,red:0,black:0,img:"noble-6"},
+        {id:"t-00440",point:3,white:0,blue:0,green:4,red:4,black:0,img:"noble-7"},
+        {id:"t-00044",point:3,white:0,blue:0,green:0,red:4,black:4,img:"noble-8"},
+        {id:"t-40004",point:3,white:4,blue:0,green:0,red:0,black:4,img:"noble-9"}
     ];
 }
