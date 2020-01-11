@@ -1,13 +1,17 @@
-.card {
-    width: 108px;
-    height: 156px;
+.card-container {
     margin: 8px;
-    padding: 8px;
-    background-color: #fff;
     border-radius: 2px;
     border: 1px solid #888;
+    position: relative;
     transition: all 0.5s ease;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,.25), 0 1px 2px 0 rgba(0,0,0,.15), 0 -1px 4px -1px rgba(0,0,0,.1);
+}
+
+.card {
+    width: 124px;
+    height: 172px;
+    position: relative;
+    background-color: transparent;
 
     &.selectable {
         cursor: pointer;
@@ -16,16 +20,20 @@
 }
 
 .card-header {
+    padding: 8px;
+    padding-bottom: 0px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
+    background-color: rgba(255,255,255,.7);
 }
 
 .card-content {
+    padding: 4px;
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
-    height: 132px;
+    height: 124px;
 }
 
 .point {
@@ -37,9 +45,16 @@
     background-color: rgba(0,0,0,.95);
 }
 
+.card-pict {
+    width: 124px;
+    height: 172px;
+    position: absolute;
+}
+
 .img-tip {
     width: 24px;
     height: 24px;
+    border-radius: 50%;
     &.white {
         content: url(/assets/tip/white.jpg);
     }
@@ -57,9 +72,36 @@
     }
 }
 
+.img-white-3-1 {
+    content: url(/assets/card/white-3-1.jpg);
+}
+.img-blue-3-1 {
+    content: url(/assets/card/blue-3-1.jpg);
+}
+.img-green-3-1 {
+    content: url(/assets/card/green-3-1.jpg);
+}
+.img-red-3-1 {
+    content: url(/assets/card/red-3-1.jpg);
+}
+.img-black-3-1 {
+    content: url(/assets/card/black-3-1.jpg);
+}
+
+.cost-row {
+    height: 28px;
+}
+.cost {
+    display: inline-block;
+    padding-top: 2px;
+    padding-left: 4px;
+    height: 26px;
+    background-color: rgba(255,255,255,.6);
+}
 .count {
     vertical-align: super;
     line-height: 24px;
+    padding: 0 4px;
 }
 
 @keyframes selectable-highlight {

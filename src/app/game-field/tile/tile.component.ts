@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Tile } from '../tile';
 
 @Component({
@@ -9,10 +9,14 @@ import { Tile } from '../tile';
 export class TileComponent implements OnInit {
 
   @Input() tile: Tile;
+  @Output() selected: EventEmitter<Tile> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onClick() {
+    this.selected.emit(this.tile);
+  }
 }

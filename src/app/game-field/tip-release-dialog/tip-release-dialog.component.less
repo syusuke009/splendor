@@ -29,7 +29,7 @@
     transition: opacity 0.3s ease;
     padding: 8px;
     width: 400px;
-    height: 340px;
+    height: 376px;
 
     &.open {
         z-index: 10000;
@@ -62,18 +62,31 @@
 .target {
     margin: 12px 0;
     font-size: 18px;
+    display: flex;
+    align-items: center;
 
-    input, label {
-        cursor: pointer;
+    label {
+        width: 160px;
     }
+    input {
+        margin: 0 4px;
+        width: 40px;
+        font-size: 18px;
+        line-height: 26px;
+        border: none;
+        border-bottom: 2px solid #CCC;
+        text-align: right;
+        cursor: default;
 
-    &.disabled {
-        color: #ccc;
-
-        input, label {
-            cursor: default;
+        &:focus {
+            outline: none;
         }
     }
+}
+
+.adjuster {
+    padding: 4px 8px;
+    margin: 0 4px;
 }
 
 .img-tip {
@@ -94,5 +107,8 @@
     }
     &.black {
         content: url(/assets/tip/black.jpg);
+    }
+    &.gold {
+        content: url(/assets/tip/gold.jpg);
     }
 }

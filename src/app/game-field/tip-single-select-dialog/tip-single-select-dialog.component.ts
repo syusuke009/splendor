@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ContentChild, Output, EventEmitter } from '@angular/core';
 import { Player } from '../player';
 import { Tips } from '../tips';
 import { GameStatusService } from '../game-status.service';
 import { GameStatus } from '../game-status';
 import { Color } from '../color.enum';
 import { GamePhaseConst } from '../game-phase-const';
+import { TipReleaseDialogComponent } from '../tip-release-dialog/tip-release-dialog.component';
 
 @Component({
   selector: 'app-tip-single-select-dialog',
@@ -15,6 +16,8 @@ export class TipSingleSelectDialogComponent implements OnInit {
 
   private BORDER_COUNT: number = 4;
 
+  @Output() over: EventEmitter<Player> = new EventEmitter();
+  
   value: string = null;
 
   status: GameStatus;
@@ -48,8 +51,11 @@ export class TipSingleSelectDialogComponent implements OnInit {
     }
     this.transferResource();
     this.reset();
+    if (this.status.getCurrentPlayer().tips.count() > 10) {
+      this.over.emit(this.status.getCurrentPlayer());
+      return;
+    }
     this.statusService.nextTurn(this.status);
-    this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 
   onCancel() {
@@ -57,7 +63,7 @@ export class TipSingleSelectDialogComponent implements OnInit {
     this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 
-  transferResource() {
+  private transferResource() {
     let player: Player = this.status.getCurrentPlayer();
     let resource: Tips = this.status.tipResource;
     switch (Number.parseInt(this.value)) {

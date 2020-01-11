@@ -64,7 +64,9 @@
     </div>
     <div class="detail-area"></div>
 
-    <app-tip-multi-select-dialog></app-tip-multi-select-dialog>
-    <app-tip-single-select-dialog></app-tip-single-select-dialog>
+    <app-tip-multi-select-dialog (over)="onPossessionOver($event)"></app-tip-multi-select-dialog>
+    <app-tip-single-select-dialog (over)="onPossessionOver($event)"></app-tip-single-select-dialog>
+    <app-tip-release-dialog></app-tip-release-dialog>
+    <app-noble-select-dialog></app-noble-select-dialog>
     <app-gameset-slide></app-gameset-slide>
 </div>

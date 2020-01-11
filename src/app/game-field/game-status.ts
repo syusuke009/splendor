@@ -35,10 +35,16 @@ export class GameStatus {
     }
     removeFieldCard(card: Card) {
       let i: number = this.fieldCards.indexOf(card);
+      if (i == -1) {
+        return;
+      }
       this.fieldCards.splice(i, 1);
     }
     removeTile(tile: Tile) {
       let i: number = this.tiles.indexOf(tile);
+      if (i == -1) {
+        return;
+      }
       this.tiles.splice(i, 1);
     }
     
