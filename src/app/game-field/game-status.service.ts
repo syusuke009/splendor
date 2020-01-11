@@ -73,6 +73,7 @@ export class GameStatusService {
    */
   nextTurnWithoutNobleVisit(status: GameStatus) {
     if (this.status.isLastPlayer() && this.gameresult.isEnd(this.status.players)) {
+      this.status.phase = GamePhaseConst.WAIT_OPERATION;
       return;
     }
     status.nextTurn();

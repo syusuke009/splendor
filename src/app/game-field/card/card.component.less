@@ -5,6 +5,11 @@
     position: relative;
     transition: all 0.5s ease;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,.25), 0 1px 2px 0 rgba(0,0,0,.15), 0 -1px 4px -1px rgba(0,0,0,.1);
+
+    &.selectable {
+        cursor: pointer;
+        animation: selectable-highlight 1.0s ease 0s infinite normal;
+    }
 }
 
 .card {
@@ -12,11 +17,6 @@
     height: 172px;
     position: relative;
     background-color: transparent;
-
-    &.selectable {
-        cursor: pointer;
-        animation: selectable-highlight 1.0s ease 0s infinite normal;
-    }
 }
 
 .card-header {
@@ -41,14 +41,32 @@
     height: 24px;
     width: 24px;
     text-align: center;
-    color: white;
-    background-color: rgba(0,0,0,.95);
+    font-family: sans-serif;
+    font-size: 20px;
 }
 
 .card-pict {
     width: 124px;
     height: 172px;
     position: absolute;
+}
+
+.cost-row {
+    height: 28px;
+}
+.cost {
+    display: inline-block;
+    padding-top: 2px;
+    padding-left: 4px;
+    height: 26px;
+    background-color: rgba(255,255,255,.6);
+}
+.count {
+    vertical-align: super;
+    padding: 0 4px;
+    line-height: 24px;
+    font-family: sans-serif;
+    font-size: 18px;
 }
 
 .img-tip {
@@ -72,6 +90,68 @@
     }
 }
 
+.img-white-1-1 {
+    content: url(/assets/card/white-1-1.jpg);
+}
+.img-white-1-2 {
+    content: url(/assets/card/white-1-2.jpg);
+}
+.img-blue-1-1 {
+    content: url(/assets/card/blue-1-1.jpg);
+}
+.img-blue-1-2 {
+    content: url(/assets/card/blue-1-2.jpg);
+}
+.img-green-1-1 {
+    content: url(/assets/card/green-1-1.jpg);
+}
+.img-green-1-2 {
+    content: url(/assets/card/green-1-2.jpg);
+}
+.img-red-1-1 {
+    content: url(/assets/card/red-1-1.jpg);
+}
+.img-red-1-2 {
+    content: url(/assets/card/red-1-2.jpg);
+}
+.img-black-1-1 {
+    content: url(/assets/card/black-1-1.jpg);
+}
+.img-black-1-2 {
+    content: url(/assets/card/black-1-2.jpg);
+}
+
+.img-white-2-1 {
+    content: url(/assets/card/white-2-1.jpg);
+}
+.img-white-2-2 {
+    content: url(/assets/card/white-2-2.jpg);
+}
+.img-blue-2-1 {
+    content: url(/assets/card/blue-2-1.jpg);
+}
+.img-blue-2-2 {
+    content: url(/assets/card/blue-2-2.jpg);
+}
+.img-green-2-1 {
+    content: url(/assets/card/green-2-1.jpg);
+}
+.img-green-2-2 {
+    content: url(/assets/card/green-2-2.jpg);
+}
+.img-red-2-1 {
+    content: url(/assets/card/red-2-1.jpg);
+}
+.img-red-2-2 {
+    content: url(/assets/card/red-2-2.jpg);
+}
+.img-black-2-1 {
+    content: url(/assets/card/black-2-1.jpg);
+}
+.img-black-2-2 {
+    content: url(/assets/card/black-2-2.jpg);
+}
+
 .img-white-3-1 {
     content: url(/assets/card/white-3-1.jpg);
 }
@@ -86,22 +166,6 @@
 }
 .img-black-3-1 {
     content: url(/assets/card/black-3-1.jpg);
-}
-
-.cost-row {
-    height: 28px;
-}
-.cost {
-    display: inline-block;
-    padding-top: 2px;
-    padding-left: 4px;
-    height: 26px;
-    background-color: rgba(255,255,255,.6);
-}
-.count {
-    vertical-align: super;
-    line-height: 24px;
-    padding: 0 4px;
 }
 
 @keyframes selectable-highlight {
