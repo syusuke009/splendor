@@ -20,11 +20,11 @@ export class GameStatusService {
     private gameresult: GameResultService) { }
 
   setup(): GameStatus {
-    this.status.players = this.setting.getPlayers().map((name) => {
+    this.status.players = this.shuffle(this.setting.getPlayers().map((name) => {
       let p: Player = new Player();
       p.name = name;
       return p;
-    });
+    }));
     this.status.getCurrentPlayer().myTurn = true;
 
     let resourceCount = this.setting.getTipResource();
@@ -40,6 +40,19 @@ export class GameStatusService {
     this.status.tiles = this.status.tiles.slice(0, this.setting.getTileCount());
 
     return this.status;
+  }
+  private shuffle(boundle: Player[]): Player[] {
+    let result = boundle.map((e) => e);
+    let count = result.length;
+
+    while (count > 0) {
+       let index = Math.floor(Math.random() * count);
+       count--;
+       let temp = result[count];
+       result[count] = result[index];
+       result[index] = temp;
+    }
+    return result;
   }
 
   nextTurn(status: GameStatus) {
