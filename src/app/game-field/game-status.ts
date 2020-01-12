@@ -2,6 +2,7 @@ import { Player } from './player';
 import { Tips } from './tips';
 import { Card } from './card';
 import { Tile } from './tile';
+import { GamePhaseConst } from './game-phase-const';
 
 export class GameStatus {
 
@@ -18,6 +19,12 @@ export class GameStatus {
     private turn: number = 0;
 
     phase: string;
+
+    reset() {
+      this.fieldCards = [];
+      this.turn = 0;
+      this.phase = GamePhaseConst.WAIT_OPERATION;
+    }
 
     getCurrentPlayer(): Player {
       return this.players[this.turn];
