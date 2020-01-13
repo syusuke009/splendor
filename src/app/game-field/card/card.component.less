@@ -1,3 +1,25 @@
+@card-width: 124px;
+@card-height: 172px;
+
+@tablet-adjust: 16px;
+
+.card-size {
+    width: @card-width;
+    height: @card-height;
+
+    @media screen and (min-height:1280px) { 
+        width: @card-width - @tablet-adjust;
+        height: @card-height - @tablet-adjust;
+    }
+}
+.card-content-size {
+    height: @card-height - 48px;
+
+    @media screen and (min-height:1280px) { 
+        height: @card-height - 48px - @tablet-adjust;
+    }
+}
+
 .card-container {
     margin: 8px;
     border-radius: 2px;
@@ -13,8 +35,7 @@
 }
 
 .card {
-    width: 124px;
-    height: 172px;
+    .card-size;
     position: relative;
     background-color: transparent;
 }
@@ -33,7 +54,7 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
-    height: 124px;
+    .card-content-size;
 }
 
 .point {
@@ -46,8 +67,7 @@
 }
 
 .card-pict {
-    width: 124px;
-    height: 172px;
+    .card-size;
     position: absolute;
 }
 

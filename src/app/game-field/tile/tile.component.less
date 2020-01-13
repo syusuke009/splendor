@@ -1,6 +1,27 @@
+@tile-width: 124px;
+@tile-height: 144px;
+
+@tablet-adjust: 16px;
+
+.tile-size {
+    width: @tile-width;
+    height: @tile-height;
+
+    @media screen and (min-height:1280px) { 
+        width: @tile-width - @tablet-adjust;
+        height: @tile-height - @tablet-adjust;
+    }
+}
+.tile-content-size {
+    height: @tile-height - 36px;
+
+    @media screen and (min-height:1280px) { 
+        height: @tile-height - 36px - @tablet-adjust;
+    }
+}
+
 .tile-container {
-    width: 108px;
-    height: 128px;
+    .tile-size;
     margin: 8px;
     border-radius: 2px;
     border: 1px solid #888;
@@ -25,7 +46,7 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
-    height: 92px;
+    .tile-content-size;
 }
 
 .point {
@@ -62,8 +83,7 @@
 }
 
 .tile-pict {
-    width: 108px;
-    height: 128px;
+    .tile-size;
     position: absolute;
 }
 
