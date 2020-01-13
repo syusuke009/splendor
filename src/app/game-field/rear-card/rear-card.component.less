@@ -1,6 +1,27 @@
+@card-width: 108px;
+@card-height: 156px;
+
+@tablet-adjust: 16px;
+
+.card-size {
+    width: @card-width;
+    height: @card-height;
+
+    @media screen and (min-height:1280px) { 
+        width: @card-width - @tablet-adjust;
+        height: @card-height - @tablet-adjust;
+    }
+}
+.card-content-size {
+    height: @card-height - 36px;
+
+    @media screen and (min-height:1280px) { 
+        height: @card-height - 48px - @tablet-adjust;
+    }
+}
+
 .card {
-    width: 108px;
-    height: 156px;
+    .card-size;
     margin: 8px;
     padding: 8px;
     border-radius: 2px;
@@ -19,7 +40,7 @@
         .figure {
             position: relative;
             overflow: hidden;
-            height: 156px;
+            .card-size;
             &.level-1  {
               background-color: #00c10a;
               .cube {
