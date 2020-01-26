@@ -7,6 +7,8 @@ import { Tile } from './tile';
 import { Tips } from './tips';
 import { GamePhaseConst } from './game-phase-const';
 import { GameResultService } from './game-result.service';
+import { OperationLogService } from './log-display/operation-log.service';
+import { OperationLogAction, OperationLog } from './log-display/operation-log';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,8 @@ export class GameStatusService {
 
   constructor(private setting: SettingService,
     private dealer: CardDealService,
-    private gameresult: GameResultService) { }
+    private gameresult: GameResultService,
+    private logService: OperationLogService) { }
 
   setup(): GameStatus {
     this.status.players = this.shuffle(this.setting.getPlayers().map((name) => {
@@ -39,6 +42,7 @@ export class GameStatusService {
 
     this.status.tiles = this.status.tiles.slice(0, this.setting.getTileCount());
 
+    this.logService.newTurn(this.status);
     return this.status;
   }
   private shuffle(boundle: Player[]): Player[] {
@@ -78,6 +82,7 @@ export class GameStatusService {
       noble = nobles.pop();
       player.visit(noble);
       this.status.removeTile(noble);
+      this.logService.append(new OperationLogAction.VisitNobleAction(noble));
     }
   }
   /**
@@ -90,6 +95,7 @@ export class GameStatusService {
       return;
     }
     status.nextTurn();
+    this.logService.newTurn(status);
     this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 }

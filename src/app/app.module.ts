@@ -16,6 +16,7 @@ import { PlayersInputComponent } from './title-page/players-input/players-input.
 import { GamesetSlideComponent } from './game-field/gameset-slide/gameset-slide.component';
 import { TipReleaseDialogComponent } from './game-field/tip-release-dialog/tip-release-dialog.component';
 import { NobleSelectDialogComponent } from './game-field/noble-select-dialog/noble-select-dialog.component';
+import { LogDisplayComponent } from './game-field/log-display/log-display.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NobleSelectDialogComponent } from './game-field/noble-select-dialog/nob
     PlayersInputComponent,
     GamesetSlideComponent,
     TipReleaseDialogComponent,
-    NobleSelectDialogComponent
+    NobleSelectDialogComponent,
+    LogDisplayComponent
   ],
   imports: [
     BrowserModule,

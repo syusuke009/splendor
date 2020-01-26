@@ -3,8 +3,9 @@ import { GameStatus } from '../game-status';
 import { GameStatusService } from '../game-status.service';
 import { Player } from '../player';
 import { Tips } from '../tips';
-import { GamePhaseConst } from '../game-phase-const';
 import { Color } from '../color.enum';
+import { OperationLogAction } from '../log-display/operation-log';
+import { OperationLogService } from '../log-display/operation-log.service';
 
 @Component({
   selector: 'app-tip-release-dialog',
@@ -24,7 +25,8 @@ export class TipReleaseDialogComponent implements OnInit {
 
   status: GameStatus;
 
-  constructor(private statusService: GameStatusService) {
+  constructor(private statusService: GameStatusService,
+      private logService: OperationLogService) {
     this.status = statusService.status;
   }
 
@@ -96,13 +98,16 @@ export class TipReleaseDialogComponent implements OnInit {
     if (this.total() != 10) {
       return;
     }
+    let transferred: Tips = new Tips();
+    transferred.white = this.maxWhite - this.tips.white;
+    transferred.blue = this.maxBlue - this.tips.blue;
+    transferred.green = this.maxGreen - this.tips.green;
+    transferred.red = this.maxRed - this.tips.red;
+    transferred.black = this.maxBlack - this.tips.black;
+    transferred.gold = this.maxGold - this.tips.gold;
     let resource: Tips = this.status.tipResource;
-    resource.white += this.maxWhite - this.tips.white;
-    resource.blue += this.maxBlue - this.tips.blue;
-    resource.green += this.maxGreen - this.tips.green;
-    resource.red += this.maxRed - this.tips.red;
-    resource.black += this.maxBlack - this.tips.black;
-    resource.gold += this.maxGold - this.tips.gold;
+    resource.add(transferred);
+    this.logService.append(new OperationLogAction.ReleaseTipAction(transferred));
     this.statusService.nextTurn(this.status);
   }
 }

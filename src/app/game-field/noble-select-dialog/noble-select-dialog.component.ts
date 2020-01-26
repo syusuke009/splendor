@@ -4,6 +4,8 @@ import { GameStatusService } from '../game-status.service';
 import { GameStatus } from '../game-status';
 import { Tips } from '../tips';
 import { Player } from '../player';
+import { OperationLogAction } from '../log-display/operation-log';
+import { OperationLogService } from '../log-display/operation-log.service';
 
 @Component({
   selector: 'app-noble-select-dialog',
@@ -16,10 +18,11 @@ export class NobleSelectDialogComponent implements OnInit {
 
   status: GameStatus;
 
-  constructor(private service: GameStatusService) { }
+  constructor(private statusService: GameStatusService,
+    private logService: OperationLogService) { }
 
   ngOnInit() {
-    this.status = this.service.status;
+    this.status = this.statusService.status;
   }
 
   visitedNobles(): Tile[] {
@@ -35,6 +38,7 @@ export class NobleSelectDialogComponent implements OnInit {
   onOK() {
     this.status.getCurrentPlayer().visit(this.select);
     this.status.removeTile(this.select);
-    this.service.nextTurnWithoutNobleVisit(this.status);
+    this.logService.append(new OperationLogAction.VisitNobleAction(this.select));
+    this.statusService.nextTurnWithoutNobleVisit(this.status);
   }
 }

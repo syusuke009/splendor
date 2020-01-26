@@ -13,6 +13,7 @@ export class AssetLineComponent implements OnInit {
 
   @Input() level :string;
   @Output() selected: EventEmitter<Card> = new EventEmitter<Card>();
+  @Output() rearselected: EventEmitter<Card> = new EventEmitter<Card>();
   card1: Card;
   card2: Card;
   card3: Card;
@@ -57,5 +58,10 @@ export class AssetLineComponent implements OnInit {
       break;
     }
     this.selected.emit(card);
+  }
+
+  onRearSelected() {
+    console.log(this.level + "山札クリック")
+    this.rearselected.emit(this.switchFunc()());
   }
 }

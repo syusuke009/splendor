@@ -1,5 +1,5 @@
 <div class="asset-line">
-    <app-rear-card [(level)]="level"></app-rear-card>
+    <app-rear-card [(level)]="level" (rearselected)="onRearSelected()"></app-rear-card>
     <app-card [(card)]="card1" (selected)="onSelected($event, 1)"></app-card>
     <app-card [(card)]="card2" (selected)="onSelected($event, 2)"></app-card>
     <app-card [(card)]="card3" (selected)="onSelected($event, 3)"></app-card>

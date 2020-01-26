@@ -161,7 +161,7 @@ export class Player {
         if (card <= tip + asset) {
             return 0;
         }
-        let lack: number = Math.max(card - tip + asset, 0);
+        let lack: number = Math.max(card - (tip + asset), 0);
         return lack * -1;
     }
 }

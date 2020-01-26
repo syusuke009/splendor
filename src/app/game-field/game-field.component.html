@@ -32,9 +32,9 @@
         <div class="play-field">
             <div class="asset-field">
                 <div class="public-asset">
-                    <app-asset-line level=1 (selected)="onSelected($event)"></app-asset-line>
-                    <app-asset-line level=2 (selected)="onSelected($event)"></app-asset-line>
-                    <app-asset-line level=3 (selected)="onSelected($event)"></app-asset-line>
+                    <app-asset-line level=1 (selected)="onSelected($event)" (rearselected)="onRearSelected($event)"></app-asset-line>
+                    <app-asset-line level=2 (selected)="onSelected($event)" (rearselected)="onRearSelected($event)"></app-asset-line>
+                    <app-asset-line level=3 (selected)="onSelected($event)" (rearselected)="onRearSelected($event)"></app-asset-line>
                 </div>
                 <div class="reserved-asset">
                     <div class="reserved-card-frame" *ngFor="let card of status.getCurrentPlayer().reservations">
@@ -62,7 +62,9 @@
             <button [class.hidden]="status.phase!='select-purchase-card'&&status.phase!='select-reservation-card'" (click)="onCancel()">キャンセル</button>
         </div>
     </div>
-    <div class="detail-area"></div>
+    <div class="log-area">
+        <app-log-display></app-log-display>
+    </div>
 
     <app-tip-multi-select-dialog (over)="onPossessionOver($event)"></app-tip-multi-select-dialog>
     <app-tip-single-select-dialog (over)="onPossessionOver($event)"></app-tip-single-select-dialog>

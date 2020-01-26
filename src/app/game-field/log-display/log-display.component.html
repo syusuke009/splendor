@@ -1,0 +1,96 @@
+<div class="log-display">
+    <div class="turn-log" *ngFor="let log of loglist.logs">
+        <div class="turn-info">
+            <span class="round">Round {{log.round}}</span>
+            <span>: {{log.player.name}} のターン</span>
+        </div>
+        <div class="action-info" *ngIf="log.actions.length==0">
+            <div class="action-row">
+                <span class="now-operating-text">行動を選択中です...</span>
+            </div>
+        </div>
+        <div class="action-info" *ngFor="let action of log.actions">
+            <div *ngIf="action.type==10">
+                <div class="action-row">
+                    <span>{{log.player.name}}が </span>
+                    <img class="img-tip white" *ngIf="action.tips.white!=0">
+                    <img class="img-tip blue" *ngIf="action.tips.blue!=0">
+                    <img class="img-tip green" *ngIf="action.tips.green!=0">
+                    <img class="img-tip red" *ngIf="action.tips.red!=0">
+                    <img class="img-tip black" *ngIf="action.tips.black!=0">
+                    <span>を1枚ずつ取得しました</span>
+                </div>
+            </div>
+            <div *ngIf="action.type==11">
+                <div class="action-row">
+                    <span>{{log.player.name}}が </span>
+                    <img class="img-tip white" *ngIf="action.tips.white!=0">
+                    <img class="img-tip blue" *ngIf="action.tips.blue!=0">
+                    <img class="img-tip green" *ngIf="action.tips.green!=0">
+                    <img class="img-tip red" *ngIf="action.tips.red!=0">
+                    <img class="img-tip black" *ngIf="action.tips.black!=0">
+                    <span>を2枚取得しました</span>
+                </div>
+            </div>
+            <div *ngIf="action.type==20">
+                <div class="action-row">
+                    <span>{{log.player.name}}が </span>
+                    <span *ngIf="action.paid.white>0"><img class="img-tip white">{{action.paid.white}}</span>
+                    <span *ngIf="action.paid.blue>0"><img class="img-tip blue">{{action.paid.blue}}</span>
+                    <span *ngIf="action.paid.green>0"><img class="img-tip green">{{action.paid.green}}</span>
+                    <span *ngIf="action.paid.red>0"><img class="img-tip red">{{action.paid.red}}</span>
+                    <span *ngIf="action.paid.black>0"><img class="img-tip black">{{action.paid.black}}</span>
+                    <span>を支払い</span>
+                </div>
+                <div class="action-row">
+                    <img class="img-tip white" *ngIf="action.card.color==0">
+                    <img class="img-tip blue" *ngIf="action.card.color==1">
+                    <img class="img-tip green" *ngIf="action.card.color==2">
+                    <img class="img-tip red" *ngIf="action.card.color==3">
+                    <img class="img-tip black" *ngIf="action.card.color==4">
+                    <span *ngIf="action.card.point==0">のカードを購入しました</span>
+                    <span *ngIf="action.card.point>0">のカードを購入し {{action.card.point}}Point獲得しました</span>
+                </div>
+            </div>
+            <div *ngIf="action.type==30">
+                <div class="action-row">
+                    <span>{{log.player.name}}が </span>
+                    <img class="img-tip white" *ngIf="action.card.color==0">
+                    <img class="img-tip blue" *ngIf="action.card.color==1">
+                    <img class="img-tip green" *ngIf="action.card.color==2">
+                    <img class="img-tip red" *ngIf="action.card.color==3">
+                    <img class="img-tip black" *ngIf="action.card.color==4">
+                    <span>のカードを予約しました</span>
+                </div>
+                <div class="action-row">
+                    <span>({{action.card.point}}Point,Level{{action.card.level}},コスト:</span>
+                    <span *ngIf="action.card.white>0"><img class="img-tip white">{{action.card.white}}</span>
+                    <span *ngIf="action.card.blue>0"><img class="img-tip blue">{{action.card.blue}}</span>
+                    <span *ngIf="action.card.green>0"><img class="img-tip green">{{action.card.green}}</span>
+                    <span *ngIf="action.card.red>0"><img class="img-tip red">{{action.card.red}}</span>
+                    <span *ngIf="action.card.black>0"><img class="img-tip black">{{action.card.black}}</span>
+                    <span>)</span>
+                </div>
+                <div class="action-row" *ngIf="action.isGotGold"><span><img class="img-tip gold">を1枚取得しました</span></div>
+            </div>
+            <div *ngIf="action.type==31">
+                <div class="action-row"><span>{{log.player.name}}が Level{{action.card.level}}の山札のカードを予約しました</span></div>
+                <div class="action-row" *ngIf="action.isGotGold"><span><img class="img-tip gold">を1枚取得しました</span></div>
+            </div>
+            <div *ngIf="action.type==110">
+                <div class="action-row"><span>{{log.player.name}}に貴族が訪れて {{action.noble.point}}Point獲得しました</span></div>
+            </div>
+            <div *ngIf="action.type==120">
+                <div class="action-row"><span>{{log.player.name}}のチップの所持数が10枚を超えたため </span>
+                    <span *ngIf="action.tips.white>0"><img class="img-tip white">{{action.tips.white}}枚</span>
+                    <span *ngIf="action.tips.blue>0"><img class="img-tip blue">{{action.tips.blue}}枚</span>
+                    <span *ngIf="action.tips.green>0"><img class="img-tip green">{{action.tips.green}}枚</span>
+                    <span *ngIf="action.tips.red>0"><img class="img-tip red">{{action.tips.red}}枚</span>
+                    <span *ngIf="action.tips.black>0"><img class="img-tip black">{{action.tips.black}}枚</span>
+                    <span *ngIf="action.tips.gold>0"><img class="img-tip gold">{{action.tips.gold}}枚</span>
+                    <span>を捨てました</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
