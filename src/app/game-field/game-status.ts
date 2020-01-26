@@ -17,12 +17,14 @@ export class GameStatus {
     private fieldCards: Card[] = [];
 
     private turn: number = 0;
+    private round: number = 1;
 
     phase: string;
 
     reset() {
       this.fieldCards = [];
       this.turn = 0;
+      this.round = 1;
       this.phase = GamePhaseConst.WAIT_OPERATION;
     }
 
@@ -61,9 +63,14 @@ export class GameStatus {
       current++;
       if (current == this.players.length) {
         current = 0;
+        this.round++;
       }
       this.turn = current;
       this.getCurrentPlayer().myTurn = true;
+    }
+
+    getCurrentRound(): number {
+      return this.round;
     }
 
     /*

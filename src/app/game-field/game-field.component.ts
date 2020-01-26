@@ -6,6 +6,8 @@ import { Card } from './card';
 import { Tips } from './tips';
 import { GamePhaseConst } from './game-phase-const';
 import { TipReleaseDialogComponent } from './tip-release-dialog/tip-release-dialog.component';
+import { OperationLogService } from './log-display/operation-log.service';
+import { OperationLogAction } from './log-display/operation-log';
 
 @Component({
   selector: 'app-game-field',
@@ -19,10 +21,11 @@ export class GameFieldComponent implements OnInit {
   @ViewChild(TipReleaseDialogComponent, {static: false})
   releaseDialog: TipReleaseDialogComponent;
 
-  constructor(private service: GameStatusService) { }
+  constructor(private statusService: GameStatusService,
+    private logService: OperationLogService) {}
 
   ngOnInit() {
-    this.status = this.service.setup();
+    this.status = this.statusService.setup();
   }
 
   openMultiSelectDialog() {
@@ -68,24 +71,36 @@ export class GameFieldComponent implements OnInit {
         p.purchaseReserved(card);
       }
       this.status.tipResource.add(returns);
-      this.service.nextTurn(this.status);
+      this.logService.append(new OperationLogAction.PurchaseCardAction(card, returns));
+      this.statusService.nextTurn(this.status);
       this.resetSelectable();
     }
     if (this.status.phase == GamePhaseConst.SELECT_RESERVATION_CARD) {
-      let p: Player = this.status.getCurrentPlayer();
-      p.reserve(card);
-      if (this.status.tipResource.gold > 0) {
-        p.tips.gold++;
-        this.status.tipResource.gold--;
-      }
-      if (p.tips.count() > 10) {
-        this.onPossessionOver(p);
-        this.resetSelectable();
-        return;
-      }
-      this.service.nextTurn(this.status);
-      this.resetSelectable();
+      let canGetGold = this.status.tipResource.gold > 0;
+      this.reserve(card, new OperationLogAction.ReservePublicCardAction(card, canGetGold));
     }
+  }
+
+  onRearSelected(card: Card) {
+    let canGetGold = this.status.tipResource.gold > 0;
+    this.reserve(card, new OperationLogAction.ReserveUnpublishedCardAction(card, canGetGold));
+  }
+
+  private reserve(card: Card, action: OperationLogAction) {
+    let p: Player = this.status.getCurrentPlayer();
+    p.reserve(card);
+    if (this.status.tipResource.gold > 0) {
+      p.tips.gold++;
+      this.status.tipResource.gold--;
+    }
+    this.logService.append(action);
+    if (p.tips.count() > 10) {
+      this.onPossessionOver(p);
+      this.resetSelectable();
+      return;
+    }
+    this.statusService.nextTurn(this.status);
+    this.resetSelectable();
   }
 
   onPossessionOver(player: Player) {

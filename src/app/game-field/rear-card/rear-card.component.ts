@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GameStatusService } from '../game-status.service';
 import { GameStatus } from '../game-status';
 import { Card } from '../card';
@@ -11,6 +11,7 @@ import { Card } from '../card';
 export class RearCardComponent implements OnInit {
 
   @Input() level: string;
+  @Output() rearselected: EventEmitter<string> = new EventEmitter();
   status: GameStatus;
   deck: Card[];
 
@@ -31,4 +32,7 @@ export class RearCardComponent implements OnInit {
     }
   }
 
+  onClick() {
+    this.rearselected.emit(this.level);
+  }
 }

@@ -5,6 +5,8 @@ import { Player } from '../player';
 import { Tips } from '../tips';
 import { GamePhaseConst } from '../game-phase-const';
 import { TipReleaseDialogComponent } from '../tip-release-dialog/tip-release-dialog.component';
+import { OperationLogService } from '../log-display/operation-log.service';
+import { OperationLogAction } from '../log-display/operation-log';
 
 @Component({
   selector: 'app-tip-multi-select-dialog',
@@ -25,7 +27,8 @@ export class TipMultiSelectDialogComponent implements OnInit {
 
   status: GameStatus;
   
-  constructor(private statusService: GameStatusService) {
+  constructor(private statusService: GameStatusService,
+      private logService: OperationLogService) {
     this.status = statusService.status;
   }
 
@@ -72,43 +75,47 @@ export class TipMultiSelectDialogComponent implements OnInit {
     if (this.count != 3) {
       return;
     }
-    this.transferResource();
+    let transferred: Tips = this.createTransferred();
+    this.transferResource(transferred);
     this.reset();
+    this.logService.append(new OperationLogAction.GetThreeKindTipAction(transferred));
     if (this.status.getCurrentPlayer().tips.count() > 10) {
       this.over.emit(this.status.getCurrentPlayer());
       return;
     }
     this.statusService.nextTurn(this.status);
   }
-
+  
   onCancel() {
     this.reset();
     this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
-
-  transferResource() {
-    let player: Player = this.status.getCurrentPlayer();
-    let resource: Tips = this.status.tipResource;
+  
+  createTransferred(): Tips {
+    let tips: Tips = new Tips();
     if (this.white) {
-      player.tips.white++;
-      resource.white--;
+      tips.white = 1;
     }
     if (this.blue) {
-      player.tips.blue++;
-      resource.blue--;
+      tips.blue = 1;
     }
     if (this.green) {
-      player.tips.green++;
-      resource.green--;
+      tips.green = 1;
     }
     if (this.red) {
-      player.tips.red++;
-      resource.red--;
+      tips.red = 1;
     }
     if (this.black) {
-      player.tips.black++;
-      resource.black--;
+      tips.black = 1;
     }
+    return tips;
+  }
+
+  transferResource(transferred: Tips) {
+    let player: Player = this.status.getCurrentPlayer();
+    player.tips.add(transferred);
+    let resource: Tips = this.status.tipResource;
+    resource.subtract(transferred);
   }
 
   private reset() {

@@ -1,0 +1,50 @@
+.log-display {
+    border: 3px solid #aaa;
+    border-radius: 3px;
+    margin: 8px;
+    padding: 8px;
+    max-height: 816px;
+    overflow-y: scroll;
+}
+
+.round {
+    font-weight: bold;
+}
+
+.turn-log{
+    padding: 8px;
+    &+.turn-log {
+        border-top: 1px solid #ccc;
+    }
+} 
+
+.action-row {
+    padding: 0 8px;
+}
+
+.now-operating-text {
+    color: #aaa;
+}
+
+.img-tip {
+    width: 24px;
+    height: 24px;
+    &.white {
+        content: url(/assets/tip/white.jpg);
+    }
+    &.blue {
+        content: url(/assets/tip/blue.jpg);
+    }
+    &.green {
+        content: url(/assets/tip/green.jpg);
+    }
+    &.red {
+        content: url(/assets/tip/red.jpg);
+    }
+    &.black {
+        content: url(/assets/tip/black.jpg);
+    }
+    &.gold {
+        content: url(/assets/tip/gold.jpg);
+    }
+}

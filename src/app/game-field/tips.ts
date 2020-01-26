@@ -14,6 +14,15 @@ export class Tips {
         this.black += other.black;
         this.gold += other.gold;
     }
+    
+    subtract(other: Tips) {
+        this.white -= other.white;
+        this.blue -= other.blue;
+        this.green -= other.green;
+        this.red -= other.red;
+        this.black -= other.black;
+        this.gold -= other.gold;
+    }
 
     count(): number {
         return this.white

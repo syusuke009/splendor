@@ -6,6 +6,8 @@ import { GameStatus } from '../game-status';
 import { Color } from '../color.enum';
 import { GamePhaseConst } from '../game-phase-const';
 import { TipReleaseDialogComponent } from '../tip-release-dialog/tip-release-dialog.component';
+import { OperationLogService } from '../log-display/operation-log.service';
+import { OperationLogAction } from '../log-display/operation-log';
 
 @Component({
   selector: 'app-tip-single-select-dialog',
@@ -22,7 +24,8 @@ export class TipSingleSelectDialogComponent implements OnInit {
 
   status: GameStatus;
 
-  constructor(private statusService: GameStatusService) {
+  constructor(private statusService: GameStatusService,
+      private logService: OperationLogService) {
     this.status = statusService.status;
   }
 
@@ -49,8 +52,10 @@ export class TipSingleSelectDialogComponent implements OnInit {
     if (this.value == null) {
       return;
     }
-    this.transferResource();
+    let transferred: Tips = this.createTransferred();
+    this.transferResource(transferred);
     this.reset();
+    this.logService.append(new OperationLogAction.GetSingleKindTipAction(transferred));
     if (this.status.getCurrentPlayer().tips.count() > 10) {
       this.over.emit(this.status.getCurrentPlayer());
       return;
@@ -58,36 +63,38 @@ export class TipSingleSelectDialogComponent implements OnInit {
     this.statusService.nextTurn(this.status);
   }
 
+  createTransferred(): Tips {
+    let tips: Tips = new Tips();
+    switch (Number.parseInt(this.value)) {
+    case Color.WHITE:
+      tips.white = 2;
+      break;
+    case Color.BLUE:
+      tips.blue = 2;
+      break;
+    case Color.GREEN:
+      tips.green = 2;
+      break;
+    case Color.RED:
+      tips.red = 2;
+      break;
+    case Color.BLACK:
+      tips.black = 2;
+      break;
+    }
+    return tips;
+  }
+
   onCancel() {
     this.reset();
     this.status.phase = GamePhaseConst.WAIT_OPERATION;
   }
 
-  private transferResource() {
+  private transferResource(transferred: Tips) {
     let player: Player = this.status.getCurrentPlayer();
+    player.tips.add(transferred);
     let resource: Tips = this.status.tipResource;
-    switch (Number.parseInt(this.value)) {
-    case Color.WHITE:
-      player.tips.white+=2;
-      resource.white-=2;
-      break;
-    case Color.BLUE:
-      player.tips.blue+=2;
-      resource.blue-=2;
-      break;
-    case Color.GREEN:
-      player.tips.green+=2;
-      resource.green-=2;
-      break;
-    case Color.RED:
-      player.tips.red+=2;
-      resource.red-=2;
-      break;
-    case Color.BLACK:
-      player.tips.black+=2;
-      resource.black-=2;
-      break;
-    }
+    resource.subtract(transferred);
   }
 
   private reset() {
