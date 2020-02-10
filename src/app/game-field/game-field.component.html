@@ -58,7 +58,7 @@
             <button (click)="openMultiSelectDialog()">違う種類の宝石を３つ取る</button>
             <button (click)="openSingleSelectDialog()">同じ種類の宝石を２つ取る</button>
             <button (click)="purchaseCard()">カードを購入する</button>
-            <button [class.disabled]="!status.canReserve()" [disabled]="!status.canReserve()" (click)="reserveCard()">カードを予約してゴールドチップを得る</button>
+            <button [class.disabled]="!status.canReserve()" [disabled]="!status.canReserve()" (click)="reserveCard()">カードを予約する</button>
             <button [class.hidden]="status.phase!='select-purchase-card'&&status.phase!='select-reservation-card'" (click)="onCancel()">キャンセル</button>
         </div>
     </div>

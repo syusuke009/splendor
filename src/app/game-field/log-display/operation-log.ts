@@ -7,6 +7,10 @@ export class OperationLogList {
     
     logs: OperationLog[] = [];
 
+    clear() {
+        this.logs = [];
+    }
+
     getActiveLog(): OperationLog {
         return this.logs[0];
     }
