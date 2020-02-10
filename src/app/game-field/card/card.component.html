@@ -1,4 +1,4 @@
-<div class="card-container" [class.selectable]="card.selectable" >
+<div class="card-container" *ngIf="card!=null" [class.selectable]="card.selectable" >
     <div class="card-pict img-{{card.img}}"></div>
     <div *ngIf="card!=null" class="card" (click)="onClick()">
         <div class="card-header">

@@ -23,6 +23,7 @@ export class GameStatusService {
     private logService: OperationLogService) { }
 
   setup(): GameStatus {
+    this.status.reset();
     this.status.players = this.shuffle(this.setting.getPlayers().map((name) => {
       let p: Player = new Player();
       p.name = name;
@@ -42,7 +43,7 @@ export class GameStatusService {
 
     this.status.tiles = this.status.tiles.slice(0, this.setting.getTileCount());
 
-    this.logService.newTurn(this.status);
+    this.logService.start(this.status);
     return this.status;
   }
   private shuffle(boundle: Player[]): Player[] {

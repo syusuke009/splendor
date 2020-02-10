@@ -13,6 +13,11 @@ export class OperationLogService {
   constructor() {
   }
 
+  start(status: GameStatus) {
+    this.loglist.clear();
+    this.newTurn(status);
+  }
+
   newTurn(status: GameStatus) {
     let log: OperationLog = new OperationLog(status.getCurrentRound(), status.getCurrentPlayer());
     this.loglist.logs.unshift(log);

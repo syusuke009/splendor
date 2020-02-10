@@ -61,7 +61,6 @@ export class AssetLineComponent implements OnInit {
   }
 
   onRearSelected() {
-    console.log(this.level + "山札クリック")
     this.rearselected.emit(this.switchFunc()());
   }
 }
