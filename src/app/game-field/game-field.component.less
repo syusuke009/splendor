@@ -56,10 +56,21 @@
 
 .asset-field {
     display: flex;
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        flex-direction: column;
+    }
     
     .reserved-asset {
         margin-left: 32px;
         background-color: #d1ffd1;
+
+        // smart phone
+        @media screen and (max-width:400px) {
+            display: flex;
+            margin-left: 0;
+        }
 
         .reserved-card-frame {
             margin-bottom: 16px;
@@ -98,13 +109,13 @@
         bottom: 0;
         display: flex;
         flex-wrap: wrap;
-        padding: 12px;
+        padding: 12px 0;
 
         button {
             margin: 4px;
             padding: 4px;
             font-size: 10.5px;
-            width: 36%;
+            width: 46%;
         }
     }
 }
