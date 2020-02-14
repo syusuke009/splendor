@@ -1,9 +1,11 @@
-<div class="players-area">
-    <div class="player-line" *ngFor="let player of players; index as i;trackBy:trackByIndex;">
-        <span>Player{{i+1}}</span><input class="user-name" [class.error]="players[i]==''" [(ngModel)]="players[i]" (change)="onChange()" placeholder="名前をいれてください" />
+<div class="players-component">
+    <div class="players-area">
+        <div class="player-line" *ngFor="let player of players; index as i;trackBy:trackByIndex;">
+            <span>Player{{i+1}}</span><input class="user-name" [class.error]="players[i]==''" [(ngModel)]="players[i]" (change)="onChange()" placeholder="名前をいれてください" />
+        </div>
     </div>
-</div>
-<div class="button-line">
-    <button [class.invisible]="players.length==4" (click)="addPlayer($event)">＋</button>
-    <button [class.invisible]="players.length==2" (click)="removePlayer($event)">－</button>
+    <div class="button-line">
+        <button [class.invisible]="players.length==4" (click)="addPlayer($event)">＋</button>
+        <button [class.invisible]="players.length==2" (click)="removePlayer($event)">－</button>
+    </div>
 </div>

@@ -40,7 +40,8 @@
                     <span *ngIf="action.paid.green>0"><img class="img-tip green">{{action.paid.green}}</span>
                     <span *ngIf="action.paid.red>0"><img class="img-tip red">{{action.paid.red}}</span>
                     <span *ngIf="action.paid.black>0"><img class="img-tip black">{{action.paid.black}}</span>
-                    <span>を支払い</span>
+                    <span *ngIf="action.paid.gold>0"><img class="img-tip gold">{{action.paid.gold}}</span>
+                    <span *ngIf="action.wasPaid()">を支払い</span>
                 </div>
                 <div class="action-row">
                     <img class="img-tip white" *ngIf="action.card.color==0">
@@ -49,7 +50,7 @@
                     <img class="img-tip red" *ngIf="action.card.color==3">
                     <img class="img-tip black" *ngIf="action.card.color==4">
                     <span *ngIf="action.card.point==0">のカードを購入しました</span>
-                    <span *ngIf="action.card.point>0">のカードを購入し {{action.card.point}}Point獲得しました</span>
+                    <span *ngIf="action.card.point>0">のカードを購入し {{action.card.point}}Pointを獲得しました</span>
                 </div>
             </div>
             <div *ngIf="action.type==30">

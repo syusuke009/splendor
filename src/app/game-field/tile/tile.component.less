@@ -2,6 +2,7 @@
 @tile-height: 144px;
 
 @tablet-adjust: 16px;
+@phone-adjust: 32px;
 
 .tile-size {
     width: @tile-width;
@@ -11,12 +12,21 @@
         width: @tile-width - @tablet-adjust;
         height: @tile-height - @tablet-adjust;
     }
+    // smart phone
+    @media screen and (max-width:400px) {
+        width: @tile-width - @phone-adjust;
+        height: @tile-height - @phone-adjust;
+    }
 }
 .tile-content-size {
     height: @tile-height - 36px;
 
     @media screen and (max-height:900px) { 
         height: @tile-height - 36px - @tablet-adjust;
+    }
+    // smart phone
+    @media screen and (max-width:400px) {
+        height: @tile-height - 48px - @phone-adjust + 12px;
     }
 }
 
@@ -27,6 +37,11 @@
     border: 1px solid #888;
     position: relative;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,.25), 0 1px 2px 0 rgba(0,0,0,.15), 0 -1px 4px -1px rgba(0,0,0,.1);
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        margin: 4px;
+    }
 }
 
 .tile {
@@ -56,10 +71,22 @@
     text-align: center;
     font-family: sans-serif;
     font-size: 20px;
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        height: 22px;
+        width: 22px;
+        font-size: 16px;
+    }
 }
 
 .cost-row {
     height: 28px;
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        height: 24px;
+    }
 }
 .cost {
     display: inline-block;
@@ -67,6 +94,11 @@
     padding-left: 4px;
     height: 26px;
     background-color: rgba(255,255,255,.6);
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        height: 22px;
+    }
 }
 .count {
     vertical-align: super;
@@ -74,12 +106,12 @@
     line-height: 24px;
     font-family: sans-serif;
     font-size: 18px;
-}
-.count {
-    vertical-align: super;
-    line-height: 24px;
-    font-family: sans-serif;
-    font-size: 18px;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        font-size: 16px;
+        line-height: 22px;
+    }
 }
 
 .tile-pict {
@@ -90,6 +122,13 @@
 .img-tip {
     width: 24px;
     height: 24px;
+    // smart phone
+    @media screen and (max-width:400px) {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        top: -2px;
+    }
     &.white {
         content: url(/assets/tip/white.jpg);
     }

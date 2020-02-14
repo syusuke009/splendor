@@ -32,6 +32,26 @@
         padding: 2px 8px;
         margin-left: 8px;
     }
+
+    // smart phone
+    @media screen and (max-width:400px) { 
+        display: none;
+        position: absolute;
+        z-index: 100;
+        background-color: #fff;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.main-field {
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        max-height: 100vh;
+        position: relative;
+    }
 }
 
 .asset-field {
@@ -47,14 +67,66 @@
     } 
 }
 
+.public-asset {
+    // smart phone
+    @media screen and (max-width:400px) {
+        display: flex;
+    }
+}
+
 .noble-field {
     display: flex;
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        margin: 16px 0;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 }
 
 .operation-field {
+    background-color: #fff;
     button {
         margin: 0 4px;
         padding: 8px 16px;
+    }
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 12px;
+
+        button {
+            margin: 4px;
+            padding: 4px;
+            font-size: 10.5px;
+            width: 36%;
+        }
+    }
+}
+
+.padding-space {
+    // smart phone
+    @media screen and (max-width:400px) { 
+        padding: 36px;
+    }
+}
+
+.log-area {
+    
+    // smart phone
+    @media screen and (max-width:400px) { 
+        display: none;
+        position: absolute;
+        z-index: 100;
+        background-color: #fff;
+        height: 100%;
+        width: 100%;
+        margin: 0;
     }
 }
 
@@ -72,6 +144,24 @@
 
     > div {
         margin-right: 16px;
+    }
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        margin: 16px 0;
+        flex-wrap: wrap;
+        width: 100%;
+        .img-tip {
+            width: 40px;
+            height: 40px;
+        }
+        .tip-count {
+            font-size: 18px;
+        }
+    
+        > div {
+            margin-right: 12px;
+        }
     }
 }
 .tip-count {
