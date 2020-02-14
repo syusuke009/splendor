@@ -18,10 +18,46 @@
     }
 }
 .button-line {
-
-
-
+    
     button {
         margin: 8px;
+    }
+}
+
+// smart phone
+@media screen and (max-width:400px) { 
+    .players-component {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .players-area {
+        height: 300px;
+        .player-line {
+            margin: 16px;
+        
+            .user-name {
+                cursor: text;
+                line-height: 24px;
+                padding: 2px;
+                margin-left: 8px;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+    
+                &.error {
+                    background-color: lighten(#e91e63, 30%);
+                }
+            }
+        }
+    }
+    .button-line {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        button {
+            margin: 8px;
+            font-size: 20px;
+            padding: 8px 16px;
+        }
     }
 }

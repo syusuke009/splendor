@@ -63,7 +63,29 @@ export namespace OperationLogAction {
 
         type: number = ActionType.PURCHASE_CARD;
         
-        constructor(private card: Card, private paid: Tips)  { }      
+        constructor(private card: Card, private paid: Tips)  { }
+        
+        wasPaid(): boolean {
+            if (this.paid.white > 0) {
+                return true;
+            }
+            if (this.paid.blue > 0) {
+                return true;
+            }
+            if (this.paid.green > 0) {
+                return true;
+            }
+            if (this.paid.red > 0) {
+                return true;
+            }
+            if (this.paid.black > 0) {
+                return true;
+            }
+            if (this.paid.gold > 0) {
+                return true;
+            }
+            return false;
+        }
         
     }
     

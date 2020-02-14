@@ -1,3 +1,5 @@
-<app-players-input (changed)="onChanged($event)"></app-players-input>
-<button routerLink="/play" [class.disabled]="notReady" [disabled]="notReady" class="start-button primary">Game Start</button>
-<div><span class="error-message">{{message}}</span></div>
+<div class="title-page">
+    <app-players-input (changed)="onChanged($event)"></app-players-input>
+    <button routerLink="/play" [class.disabled]="notReady" [disabled]="notReady" class="start-button primary">Game Start</button>
+    <div><span class="error-message">{{message}}</span></div>
+</div>

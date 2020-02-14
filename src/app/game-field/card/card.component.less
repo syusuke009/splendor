@@ -2,6 +2,7 @@
 @card-height: 172px;
 
 @tablet-adjust: 16px;
+@phone-adjust: 32px;
 
 .card-size {
     width: @card-width;
@@ -11,12 +12,21 @@
         width: @card-width - @tablet-adjust;
         height: @card-height - @tablet-adjust;
     }
+    // smart phone
+    @media screen and (max-width:400px) {
+        width: @card-width - @phone-adjust;
+        height: @card-height - @phone-adjust;
+    }
 }
 .card-content-size {
     height: @card-height - 48px;
 
     @media screen and (max-height:900px) { 
         height: @card-height - 48px - @tablet-adjust;
+    }
+    // smart phone
+    @media screen and (max-width:400px) {
+        height: @card-height - 48px - @phone-adjust + 8px;
     }
 }
 
@@ -31,6 +41,11 @@
     &.selectable {
         cursor: pointer;
         animation: selectable-highlight 1.0s ease 0s infinite normal;
+    }
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        margin: 4px;
     }
 }
 
@@ -47,6 +62,16 @@
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
     background-color: rgba(255,255,255,.7);
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        .img-tip {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+        
+        }
+    }
 }
 
 .card-content {
@@ -64,6 +89,13 @@
     text-align: center;
     font-family: sans-serif;
     font-size: 20px;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        height: 22px;
+        width: 22px;
+        font-size: 16px;
+    }
 }
 
 .card-pict {
@@ -73,12 +105,17 @@
 
 .cost-row {
     height: 28px;
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        height: 24px;
+    }
 }
 .cost {
     display: inline-block;
     padding-top: 2px;
     padding-left: 4px;
-    height: 26px;
+    height: 22px;
     background-color: rgba(255,255,255,.6);
 }
 .count {
@@ -87,12 +124,26 @@
     line-height: 24px;
     font-family: sans-serif;
     font-size: 18px;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        font-size: 16px;
+        line-height: 22px;
+    }
 }
+
 
 .img-tip {
     width: 24px;
     height: 24px;
     border-radius: 50%;
+    // smart phone
+    @media screen and (max-width:400px) {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        top: -2px;
+    }
     &.white {
         content: url(/assets/tip/white.jpg);
     }
