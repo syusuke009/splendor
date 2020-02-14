@@ -50,17 +50,29 @@
 }
 
 h2 {
-    margin:32px;
+    margin: 32px;
     font-size: 72px;
     color: #ff0d0d;
     background: -webkit-linear-gradient(30deg, #fcb3a9, #b40303, #eca9a9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        margin: 16px;
+        font-size: 36px;
+    }
 }
 h1.first {
-    margin:48px;
+    margin: 48px;
     font-size: 128px;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        margin: 24px;
+        font-size: 48px;
+    }
     .ranking,
     .player-name {
         color: #DA8E00;
@@ -73,6 +85,12 @@ h1.first {
 h3 {
     margin:48px;
     font-size: 64px;
+
+    // smart phone
+    @media screen and (max-width:400px) {
+        margin: 24px;
+        font-size: 24px;
+    }
 
     &.second {
         .ranking,
