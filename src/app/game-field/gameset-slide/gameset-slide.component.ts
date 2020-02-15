@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameResult } from '../game-result';
 import { GameResultService } from '../game-result.service';
+import { Player } from '../player';
 
 @Component({
   selector: 'app-gameset-slide',

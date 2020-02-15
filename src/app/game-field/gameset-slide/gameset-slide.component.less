@@ -31,6 +31,12 @@
     transition: opacity 0.3s ease;
     padding: 8px;
     height: 80%;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        height: 100%;
+        padding: 0px;
+    }
 
     &.active {
         z-index: 10000;
@@ -41,11 +47,23 @@
 .result-line {
     display: flex;
     justify-content: center;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        flex-direction: column;
+    }
 
     .result-info {
         display: flex;
         flex-direction: column;
         margin-left: 32px;
+    
+        // smart phone
+        @media screen and (max-width:400px) {
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-left: 0;
+        }
     }
 }
 
@@ -70,7 +88,7 @@ h1.first {
     
     // smart phone
     @media screen and (max-width:400px) {
-        margin: 24px;
+        margin: 20px 0;
         font-size: 48px;
     }
     .ranking,
@@ -88,8 +106,8 @@ h3 {
 
     // smart phone
     @media screen and (max-width:400px) {
-        margin: 24px;
-        font-size: 24px;
+        margin: 16px 0;
+        font-size: 28px;
     }
 
     &.second {
@@ -128,6 +146,11 @@ h3 {
 .space {
     color: transparent;
     background-color: transparent;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        display: none;
+    }
 }
 .result-info {
     color: #ccc;
@@ -136,5 +159,15 @@ h3 {
     }
     .assets-count {
         font-size: 40%;
+    }
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        .point-count {
+            font-size: 60%;
+        }
+        .assets-count {
+            font-size: 60%;
+        }
     }
 }
