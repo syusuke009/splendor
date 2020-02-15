@@ -51,6 +51,7 @@
     @media screen and (max-width:400px) {
         max-height: 100vh;
         position: relative;
+        overflow: scroll;
     }
 }
 
@@ -161,17 +162,19 @@
     @media screen and (max-width:400px) {
         margin: 16px 0;
         flex-wrap: wrap;
+        justify-content: space-between;
         width: 100%;
         .img-tip {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
         }
         .tip-count {
-            font-size: 18px;
+            margin-left: 2px;
+            font-size: 14px;
         }
     
         > div {
-            margin-right: 12px;
+            margin-right: 0;
         }
     }
 }
