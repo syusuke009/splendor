@@ -56,14 +56,40 @@
     .result-info {
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
         margin-left: 32px;
+        color: #ccc;
     
         // smart phone
         @media screen and (max-width:400px) {
             flex-direction: row;
-            justify-content: space-evenly;
             margin-left: 0;
         }
+
+        .point-count {
+            font-size: 40%;
+        }
+        .assets-count {
+            font-size: 40%;
+        }
+        // smart phone
+        @media screen and (max-width:400px) {
+            .point-count {
+                font-size: 60%;
+            }
+            .assets-count {
+                font-size: 60%;
+            }
+        }
+    }
+}
+.space {
+    color: transparent;
+    background-color: transparent;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        display: none;
     }
 }
 
@@ -140,34 +166,6 @@ h3 {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-    }
-}
-.space {
-    color: transparent;
-    background-color: transparent;
-    
-    // smart phone
-    @media screen and (max-width:400px) {
-        display: none;
-    }
-}
-.result-info {
-    color: #ccc;
-    .point-count {
-        font-size: 40%;
-    }
-    .assets-count {
-        font-size: 40%;
-    }
-    
-    // smart phone
-    @media screen and (max-width:400px) {
-        .point-count {
-            font-size: 60%;
-        }
-        .assets-count {
-            font-size: 60%;
         }
     }
 }
