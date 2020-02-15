@@ -21,11 +21,15 @@ export class GameStatus {
 
     phase: string;
 
+    // for smart-phone
+    screenMode: string;
+
     reset() {
       this.fieldCards = [];
       this.turn = 0;
       this.round = 1;
       this.phase = GamePhaseConst.WAIT_OPERATION;
+      this.screenMode = 'field';
     }
 
     getCurrentPlayer(): Player {
@@ -81,5 +85,12 @@ export class GameStatus {
         return false;
       }
       return true;
+    }
+
+    /*
+     * smart-phone画面制御用メソッド
+     */
+    switchScreen(screenMode: string) {
+      this.screenMode = screenMode;
     }
 }
