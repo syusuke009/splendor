@@ -107,4 +107,8 @@ export class GameFieldComponent implements OnInit {
     this.releaseDialog.redraw(player);
     this.status.phase = GamePhaseConst.OPEN_TIP_RELEASE_DIALOG;
   }
+  
+  switchScreen(screenMode: string) {
+    this.status.switchScreen(screenMode);
+  }
 }

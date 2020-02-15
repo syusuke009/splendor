@@ -1,5 +1,10 @@
+<div class="screen-tab">
+    <button class="tab-button" (click)="switchScreen('field')">フィールド</button>
+    <button class="tab-button" (click)="switchScreen('players')">プレイヤー</button>
+    <button class="tab-button" (click)="switchScreen('log')">ログ</button>
+</div>
 <div class="screen">
-    <div class="players">
+    <div class="players" [class.open]="status.screenMode=='players'">
         <div *ngFor="let player of status.players" class="player-info" [class.my-turn]="player.myTurn">
             <div><span>{{player.name}}</span><span *ngIf="player.myTurn" class="turn-mark">playing</span></div>
             <div><span>{{player.point}}</span><span> Point</span></div>
@@ -28,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div class="main-field">
+    <div class="main-field" [class.open]="status.screenMode=='field'">
         <div class="play-field">
             <div class="asset-field">
                 <div class="public-asset">
@@ -56,14 +61,14 @@
         </div>
         <div class="padding-space"></div>
         <div class="operation-field">
-            <button (click)="openMultiSelectDialog()">違う種類の宝石を３つ取る</button>
-            <button (click)="openSingleSelectDialog()">同じ種類の宝石を２つ取る</button>
-            <button (click)="purchaseCard()">カードを購入する</button>
-            <button [class.disabled]="!status.canReserve()" [disabled]="!status.canReserve()" (click)="reserveCard()">カードを予約する</button>
-            <button [class.hidden]="status.phase!='select-purchase-card'&&status.phase!='select-reservation-card'" (click)="onCancel()">キャンセル</button>
+            <button class="ope-diff3" (click)="openMultiSelectDialog()"></button>
+            <button class="ope-same2" (click)="openSingleSelectDialog()"></button>
+            <button class="ope-purchase" (click)="purchaseCard()"></button>
+            <button class="ope-reserve" [class.disabled]="!status.canReserve()" [disabled]="!status.canReserve()" (click)="reserveCard()"></button>
+            <button class="ope-cancel" [class.disabled]="status.phase!='select-purchase-card'&&status.phase!='select-reservation-card'" (click)="onCancel()">キャンセル</button>
         </div>
     </div>
-    <div class="log-area">
+    <div class="log-area" [class.open]="status.screenMode=='log'">
         <app-log-display></app-log-display>
     </div>
 
