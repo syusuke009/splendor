@@ -1,3 +1,5 @@
+@top-fix-height: 24px;
+
 .screen {
 
     display: flex;
@@ -18,7 +20,7 @@
         position: fixed;
         z-index: 100;
         background-color: rgba(0, 0, 0, .7);
-        height: 24px;
+        height: @top-fix-height;
         width: 100%;
         margin: 0;
 
@@ -69,13 +71,14 @@
     // smart phone
     @media screen and (max-width:400px) { 
         display: none;
-        height: 100%;
+        height: calc(100vh - @top-fix-height);
         width: 100%;
         margin: 0;
+        overflow: scroll;
 
         &.open {
-            display: flex;
-            flex-direction: column;
+            display: block;
+            margin-bottom: 40px;
         }
     }
 }
@@ -86,7 +89,7 @@
     @media screen and (max-width:400px) {
         display: none;
         padding: 8px;
-        max-height: 100vh;
+        height: calc(100vh - @top-fix-height);
         position: relative;
         overflow: scroll;
 
@@ -215,7 +218,7 @@
 .padding-space {
     // smart phone
     @media screen and (max-width:400px) { 
-        padding: 40px;
+        padding: 80px;
     }
 }
 
@@ -232,7 +235,7 @@
         margin: 0;
 
         &.open {
-            display: inherit;
+            display: block;
         }
     }
 }
