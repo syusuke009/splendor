@@ -5,6 +5,14 @@
     padding: 8px;
     max-height: 816px;
     overflow-y: scroll;
+    
+    // smart phone
+    @media screen and (max-width:400px) {
+        max-height: calc(100vh - 28px);
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
 }
 
 .round {
