@@ -31,6 +31,14 @@
             <div class="player-tips-row">
                 <div><i class="img-tip gold"></i><span class="tip-count">×{{player.tips.gold}}</span></div>
             </div>
+            <div class="reserved-cards">
+                <div *ngFor="let c of player.getReservedCards()">
+                    <div *ngIf="c == null" class="reserved-card no-reserved"></div>
+                    <div *ngIf="c != null" class="reserved-card" [class.level-1]="c.level == 1" [class.level-2]="c.level == 2" [class.level-3]="c.level == 3">
+                        <div class="figure"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="padding-space"></div>
     </div>
@@ -62,9 +70,9 @@
         </div>
         <div class="padding-space"></div>
         <div class="operation-field">
-            <button class="ope-diff3" (click)="openMultiSelectDialog()"></button>
-            <button class="ope-same2" (click)="openSingleSelectDialog()"></button>
-            <button class="ope-purchase" (click)="purchaseCard()"></button>
+            <button class="ope-diff3" [class.disabled]="!status.canGet3Tip()" [disabled]="!status.canGet3Tip()" (click)="openMultiSelectDialog()"></button>
+            <button class="ope-same2" [class.disabled]="!status.canGet2Tip()" [disabled]="!status.canGet2Tip()" (click)="openSingleSelectDialog()"></button>
+            <button class="ope-purchase" [class.disabled]="!status.canPurchase()" [disabled]="!status.canPurchase()" (click)="purchaseCard()"></button>
             <button class="ope-reserve" [class.disabled]="!status.canReserve()" [disabled]="!status.canReserve()" (click)="reserveCard()"></button>
             <button class="ope-cancel" [class.disabled]="status.phase!='select-purchase-card'&&status.phase!='select-reservation-card'" (click)="onCancel()">キャンセル</button>
         </div>

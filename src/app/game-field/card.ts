@@ -1,11 +1,11 @@
 import { Color } from './color.enum';
-import { Player } from './player';
-import { Tips } from './tips';
 
 export class Card {
 
     id: string;
     img: string;
+
+    level: number;
 
     color: Color;
 

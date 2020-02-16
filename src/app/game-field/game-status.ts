@@ -80,6 +80,48 @@ export class GameStatus {
     /*
      * ボタン制御用メソッド
      */
+    canGet3Tip(): boolean {
+      let enoughColor = 0;
+      let resource = this.tipResource;
+      if (resource.white > 0) {
+        enoughColor++;
+      }
+      if (resource.blue > 0) {
+        enoughColor++;
+      }
+      if (resource.green > 0) {
+        enoughColor++;
+      }
+      if (resource.red > 0) {
+        enoughColor++;
+      }
+      if (resource.black > 0) {
+        enoughColor++;
+      }
+      return enoughColor >= 3;
+    }
+    canGet2Tip(): boolean {
+      let resource = this.tipResource;
+      if (resource.white >= 4) {
+        return true;
+      }
+      if (resource.blue >= 4) {
+        return true;
+      }
+      if (resource.green >= 4) {
+        return true;
+      }
+      if (resource.red >= 4) {
+        return true;
+      }
+      if (resource.black >= 4) {
+        return true;
+      }
+      return false;
+    }
+    canPurchase(): boolean {
+      return this.fieldCards.some(c => this.getCurrentPlayer().canSelect(c));;
+    }
     canReserve(): boolean {
       if (this.getCurrentPlayer().reservations.length == 3) {
         return false;
