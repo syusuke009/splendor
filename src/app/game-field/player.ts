@@ -33,6 +33,18 @@ export class Player {
         return this.tips.black + this.assets.black;
     }
 
+    getReservedCards(): Card[] {
+        let result = [];
+        for (let i = 0; i < 3; i++) {
+            if (i >= this.reservations.length) {
+                result.push(null);
+            } else {
+                result.push(this.reservations[i]);
+            }
+        }
+        return result;
+    }
+
     /**
      * チップを払ってカードを取得する
      * @param card 
@@ -124,6 +136,10 @@ export class Player {
         return returns;
     }
 
+    /**
+     * カードに対して持っているリソースで足りるかどうかを判定
+     * @param card 
+     */
     canSelect(card: Card): boolean {
         let tips: Tips = this.tips;
         let wildcard = tips.gold;

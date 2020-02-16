@@ -4,7 +4,7 @@
 
     display: flex;
     // smart phone
-    @media screen and (max-width:400px) { 
+    @media screen and (max-width:450px) { 
         padding-top: 24px;
     }
 
@@ -14,7 +14,7 @@
     display: none;
 
     // smart phone
-    @media screen and (max-width:400px) { 
+    @media screen and (max-width:450px) { 
         display: flex;
         justify-content: space-between;
         position: fixed;
@@ -71,7 +71,7 @@
     }
 
     // smart phone
-    @media screen and (max-width:400px) { 
+    @media screen and (max-width:450px) { 
         display: none;
         max-height: calc(100vh - @top-fix-height);
         width: 100%;
@@ -85,14 +85,16 @@
 }
 
 .main-field {
+    overflow: auto;
+    padding: 4px;
+    max-height: 100vh;
+    position: relative;
 
     // smart phone
-    @media screen and (max-width:400px) {
+    @media screen and (max-width:450px) {
         display: none;
         padding: 8px;
         height: calc(100vh - @top-fix-height);
-        position: relative;
-        overflow: scroll;
 
         &.open {
             display: block;
@@ -104,7 +106,7 @@
     display: flex;
 
     // smart phone
-    @media screen and (max-width:400px) {
+    @media screen and (max-width:450px) {
         flex-direction: column;
     }
     
@@ -113,7 +115,7 @@
         background-color: #d1ffd1;
 
         // smart phone
-        @media screen and (max-width:400px) {
+        @media screen and (max-width:450px) {
             margin-top: 16px;
             display: flex;
             margin-left: 0;
@@ -123,7 +125,7 @@
             margin-bottom: 16px;
 
             // smart phone
-            @media screen and (max-width:400px) {
+            @media screen and (max-width:450px) {
                 margin-bottom: 0;
             }
         }
@@ -132,7 +134,7 @@
 
 .public-asset {
     // smart phone
-    @media screen and (max-width:400px) {
+    @media screen and (max-width:450px) {
         display: flex;
         justify-content: space-around;
     }
@@ -142,7 +144,7 @@
     display: flex;
 
     // smart phone
-    @media screen and (max-width:400px) {
+    @media screen and (max-width:450px) {
         margin: 16px 0;
         flex-wrap: wrap;
         width: 100%;
@@ -150,21 +152,35 @@
 }
 
 .operation-field {
-    background-color: #fff;
     button {
         margin: 0 4px;
         padding: 8px 16px;
     }
 
+    &.float {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 4px;
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+
+        button {
+            margin: 6px 4px;
+            padding: 12px 24px;
+        }
+    }
+
     // smart phone
-    @media screen and (max-width:400px) {
-        position: fixed;
-        bottom: 0;
+    @media screen and (max-width:450px) {
         display: flex;
         justify-content: space-between;
         padding: 8px 4px;
+        background-color: #fff;
+        position: fixed;
         left: 0;
         right: 0;
+        bottom: 0;
 
         button {
             margin: 4px;
@@ -178,7 +194,7 @@
         content: '違う種類の宝石を３つ取る';
 
         // smart phone
-        @media screen and (max-width:400px) {
+        @media screen and (max-width:450px) {
             content: '違種\A３つ';
             white-space: pre;
         }
@@ -188,7 +204,7 @@
         content: '同じ種類の宝石を２つ取る';
 
         // smart phone
-        @media screen and (max-width:400px) {
+        @media screen and (max-width:450px) {
             content: '同種\A２つ';
             white-space: pre;
         }
@@ -198,7 +214,7 @@
         content: 'カードを購入する';
 
         // smart phone
-        @media screen and (max-width:400px) {
+        @media screen and (max-width:450px) {
             content: 'カード\A購入';
             white-space: pre;
         }
@@ -208,7 +224,7 @@
         content: 'カードを予約する';
 
         // smart phone
-        @media screen and (max-width:400px) {
+        @media screen and (max-width:450px) {
             content: 'カード\A予約';
             white-space: pre;
         }
@@ -218,7 +234,7 @@
 
 .padding-space {
     // smart phone
-    @media screen and (max-width:400px) { 
+    @media screen and (max-width:450px) { 
         padding: 80px;
     }
 }
@@ -226,7 +242,7 @@
 .log-area {
     
     // smart phone
-    @media screen and (max-width:400px) { 
+    @media screen and (max-width:450px) { 
         display: none;
         position: absolute;
         z-index: 100;
@@ -258,7 +274,7 @@
     }
 
     // smart phone
-    @media screen and (max-width:400px) {
+    @media screen and (max-width:450px) {
         margin: 16px 0;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -310,4 +326,41 @@
     &.gold {
         content: url(/assets/tip/gold.jpg);
     }
+}
+
+.reserved-cards {
+    display: flex;
+    .reserved-card {
+        height: 32px;
+        width: 24px;
+        border: 1px solid #aaa;
+        margin-right: 8px;
+        padding: 4px;
+
+        &.no-reserved {
+            border-style: dashed;
+        }
+        &.level-1 {
+            .figure {
+                height: 100%;
+                width: 100%;
+                background-color: #00c10a;
+            }
+        }
+        &.level-2 {
+            .figure {
+                height: 100%;
+                width: 100%;
+                background-color: #dd9000;
+            }
+        }
+        &.level-3 {
+            .figure {
+                height: 100%;
+                width: 100%;
+                background-color: #0040C1;
+            }
+        }
+    }
+
 }
