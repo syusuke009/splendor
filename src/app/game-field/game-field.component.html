@@ -46,9 +46,9 @@
         <div class="play-field">
             <div class="asset-field">
                 <div class="public-asset">
-                    <app-asset-line level=1 (selected)="onSelected($event)" (rearselected)="onRearSelected($event)"></app-asset-line>
-                    <app-asset-line level=2 (selected)="onSelected($event)" (rearselected)="onRearSelected($event)"></app-asset-line>
                     <app-asset-line level=3 (selected)="onSelected($event)" (rearselected)="onRearSelected($event)"></app-asset-line>
+                    <app-asset-line level=2 (selected)="onSelected($event)" (rearselected)="onRearSelected($event)"></app-asset-line>
+                    <app-asset-line level=1 (selected)="onSelected($event)" (rearselected)="onRearSelected($event)"></app-asset-line>
                 </div>
                 <div class="reserved-asset">
                     <div class="reserved-card-frame" *ngFor="let card of status.getCurrentPlayer().reservations">
