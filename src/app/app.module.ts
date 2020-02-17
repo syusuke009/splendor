@@ -17,6 +17,7 @@ import { GamesetSlideComponent } from './game-field/gameset-slide/gameset-slide.
 import { TipReleaseDialogComponent } from './game-field/tip-release-dialog/tip-release-dialog.component';
 import { NobleSelectDialogComponent } from './game-field/noble-select-dialog/noble-select-dialog.component';
 import { LogDisplayComponent } from './game-field/log-display/log-display.component';
+import { HelpComponent } from './game-field/help/help.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LogDisplayComponent } from './game-field/log-display/log-display.compon
     GamesetSlideComponent,
     TipReleaseDialogComponent,
     NobleSelectDialogComponent,
-    LogDisplayComponent
+    LogDisplayComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,

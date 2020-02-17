@@ -4,7 +4,7 @@
 
     display: flex;
     // smart phone
-    @media screen and (max-width:450px) { 
+    @media screen and (max-width:1200px) { 
         padding-top: 24px;
     }
 
@@ -14,7 +14,7 @@
     display: none;
 
     // smart phone
-    @media screen and (max-width:450px) { 
+    @media screen and (max-width:1200px) { 
         display: flex;
         justify-content: space-between;
         position: fixed;
@@ -40,7 +40,8 @@
 }
 
 .players {
-    min-width: 200px;
+    width: 20%;
+    min-width: 205px;
     padding: 8px;
     overflow: auto;
     max-height: 100vh;
@@ -71,7 +72,7 @@
     }
 
     // smart phone
-    @media screen and (max-width:450px) { 
+    @media screen and (max-width:1200px) { 
         display: none;
         max-height: calc(100vh - @top-fix-height);
         width: 100%;
@@ -85,13 +86,17 @@
 }
 
 .main-field {
+    width: 55%;
+    min-width: 810px;
+    max-height: 100vh;
     overflow: auto;
     padding: 4px;
-    max-height: 100vh;
     position: relative;
 
     // smart phone
-    @media screen and (max-width:450px) {
+    @media screen and (max-width:810px) {
+        width: 100%;
+        min-width: auto;
         display: none;
         padding: 8px;
         height: calc(100vh - @top-fix-height);
@@ -106,16 +111,16 @@
     display: flex;
 
     // smart phone
-    @media screen and (max-width:450px) {
+    @media screen and (max-width:810px) {
         flex-direction: column;
     }
     
     .reserved-asset {
-        margin-left: 32px;
+        margin-left: 8px;
         background-color: #d1ffd1;
 
         // smart phone
-        @media screen and (max-width:450px) {
+        @media screen and (max-width:810px) {
             margin-top: 16px;
             display: flex;
             margin-left: 0;
@@ -125,7 +130,7 @@
             margin-bottom: 16px;
 
             // smart phone
-            @media screen and (max-width:450px) {
+            @media screen and (max-width:810px) {
                 margin-bottom: 0;
             }
         }
@@ -134,7 +139,7 @@
 
 .public-asset {
     // smart phone
-    @media screen and (max-width:450px) {
+    @media screen and (max-width:810px) {
         display: flex;
         justify-content: space-around;
     }
@@ -144,8 +149,9 @@
     display: flex;
 
     // smart phone
-    @media screen and (max-width:450px) {
+    @media screen and (max-width:810px) {
         margin: 16px 0;
+        justify-content: space-around;
         flex-wrap: wrap;
         width: 100%;
     }
@@ -172,7 +178,7 @@
     }
 
     // smart phone
-    @media screen and (max-width:450px) {
+    @media screen and (max-width:810px) {
         display: flex;
         justify-content: space-between;
         padding: 8px 4px;
@@ -194,7 +200,7 @@
         content: '違う種類の宝石を３つ取る';
 
         // smart phone
-        @media screen and (max-width:450px) {
+        @media screen and (max-width:810px) {
             content: '違種\A３つ';
             white-space: pre;
         }
@@ -204,7 +210,7 @@
         content: '同じ種類の宝石を２つ取る';
 
         // smart phone
-        @media screen and (max-width:450px) {
+        @media screen and (max-width:810px) {
             content: '同種\A２つ';
             white-space: pre;
         }
@@ -214,7 +220,7 @@
         content: 'カードを購入する';
 
         // smart phone
-        @media screen and (max-width:450px) {
+        @media screen and (max-width:810px) {
             content: 'カード\A購入';
             white-space: pre;
         }
@@ -224,7 +230,7 @@
         content: 'カードを予約する';
 
         // smart phone
-        @media screen and (max-width:450px) {
+        @media screen and (max-width:810px) {
             content: 'カード\A予約';
             white-space: pre;
         }
@@ -234,22 +240,20 @@
 
 .padding-space {
     // smart phone
-    @media screen and (max-width:450px) { 
+    @media screen and (max-width:810px) { 
         padding: 80px;
     }
 }
 
 .log-area {
+    width: 25%;
+    min-width: 290px;
     
     // smart phone
-    @media screen and (max-width:450px) { 
+    @media screen and (max-width:1200px) { 
         display: none;
-        position: absolute;
-        z-index: 100;
-        background-color: #fff;
         height: 100%;
         width: 100%;
-        margin: 0;
 
         &.open {
             display: block;
@@ -274,7 +278,7 @@
     }
 
     // smart phone
-    @media screen and (max-width:450px) {
+    @media screen and (max-width:810px) {
         margin: 16px 0;
         flex-wrap: wrap;
         justify-content: space-between;
