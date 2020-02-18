@@ -1,7 +1,8 @@
 <div class="screen-tab">
-    <button class="tab-button" (click)="switchScreen('field')">フィールド</button>
-    <button class="tab-button" (click)="switchScreen('players')">プレイヤー</button>
-    <button class="tab-button" (click)="switchScreen('log')">ログ</button>
+    <button class="tab-button w-2" [class.active]="status.screenMode=='field'" (click)="switchScreen('field')">フィールド</button>
+    <button class="tab-button w-2" [class.active]="status.screenMode=='players'" (click)="switchScreen('players')">プレイヤー</button>
+    <button class="tab-button w-1" [class.active]="status.screenMode=='log'" (click)="switchScreen('log')">ログ</button>
+    <button class="tab-button w-1" [class.active]="status.screenMode=='help'" (click)="switchScreen('help')">ヘルプ</button>
 </div>
 <div class="screen">
     <div class="players" [class.open]="status.screenMode=='players'">
@@ -75,10 +76,14 @@
             <button class="ope-purchase" [class.disabled]="!status.canPurchase()" [disabled]="!status.canPurchase()" (click)="purchaseCard()"></button>
             <button class="ope-reserve" [class.disabled]="!status.canReserve()" [disabled]="!status.canReserve()" (click)="reserveCard()"></button>
             <button class="ope-cancel" [class.disabled]="status.phase!='select-purchase-card'&&status.phase!='select-reservation-card'" (click)="onCancel()">キャンセル</button>
+            <button class="ope-help" (click)="status.screenMode='help';">ヘルプ</button>
         </div>
     </div>
     <div class="log-area" [class.open]="status.screenMode=='log'">
         <app-log-display></app-log-display>
+    </div>
+    <div class="help-screen" [class.open]="status.screenMode=='help'">
+        <app-help></app-help>
     </div>
 
     <app-tip-multi-select-dialog (over)="onPossessionOver($event)"></app-tip-multi-select-dialog>

@@ -19,21 +19,33 @@
         justify-content: space-between;
         position: fixed;
         z-index: 100;
-        background-color: rgba(0, 0, 0, .7);
         height: @top-fix-height;
         width: 100%;
         margin: 0;
-
+        
         .tab-button {
             border-radius: 0;
             border: none;
             color: #e1e1e1;
-            background-color: transparent;
+            background-color: rgba(0, 0, 0, .65);
             box-shadow: none;
             width: inherit;
+            padding: 0;
 
             &+.tab-button {
                 border-left: 1px solid #aaa;
+            }
+
+            &.w-2 {
+                width: 30%;
+            }
+            &.w-1 {
+                width: 20%;
+            }
+
+            &.active {
+                background-color: rgba(0, 0, 0, .8);
+                color: lighten(#dd9000, 35%);
             }
         }
     }
@@ -236,6 +248,12 @@
         }
     }
     
+    // smart phone
+    @media screen and (max-width:1200px) { 
+        .ope-help {
+            display: none;
+        }
+    }
 }
 
 .padding-space {
@@ -258,6 +276,21 @@
         &.open {
             display: block;
         }
+    }
+}
+
+.help-screen {
+    display: none;
+
+    &.open {
+        display: block;
+    }
+    
+    // smart phone
+    @media screen and (max-width:1200px) { 
+        max-height: calc(100vh - @top-fix-height);
+        width: 100%;
+        overflow: scroll;
     }
 }
 
